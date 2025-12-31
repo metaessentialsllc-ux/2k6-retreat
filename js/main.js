@@ -36,10 +36,9 @@ function navigate(pageId) {
 function openMap(type) {
     const address = encodeURIComponent("123 Bear Peak Overlook, Blue Ridge, GA 30513");
     if (type === 'apple') {
-        window.open(`maps://maps.apple.com/?q=${address}`, '_blank');
+        window.location.href = `maps://maps.apple.com/?q=${address}`;
     } else {
-        // Corrected Google Maps URL
-        window.open(`https://www.google.com/maps/search/?api=1&query=${address}`, '_blank');
+        window.location.href = `https://www.google.com/maps/search/?api=1&query=${address}`;
     }
 }
 
