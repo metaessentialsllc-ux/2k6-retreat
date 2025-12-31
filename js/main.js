@@ -35,7 +35,7 @@ function navigate(pageId) {
 
     function openMap(type) {
     // The real address for the cabin
-    const address = encodeURIComponent("123 Bear Peak Overlook, Blue Ridge, GA 30513");
+    const address = encodeURIComponent("808 High River Road, Elijay, GA 30540");
     
     if (type === 'apple') {
         // Universal Link - Works best in PWAs
