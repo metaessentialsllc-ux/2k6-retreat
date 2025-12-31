@@ -4,35 +4,35 @@
 
 const retreatData = [
     {
-        day: "Friday, Jan 16” // Update to your real dates
+        day: "Friday, Jan 16",
         events: [
-            { time: “5:00 PM", title: "Arrival & Cabin Check-in", location: "Main Cabin", icon: "🚗" },
-            { time: "7:00 PM", title: “Welcome Reception”, location: “Main House”, icon: "🍴" },
+            { time: "5:00 PM", title: "Arrival & Cabin Check-in", location: "Main Cabin", icon: "🚗" },
+            { time: "7:00 PM", title: "Welcome Reception", location: "Main House", icon: "🍴" }
         ]
     },
     {
-        day: "Saturday, Jan 17”,
+        day: "Saturday, Jan 17",
         events: [
-            { time: “7:00 AM", title: “Coffee and Conversations”, location: "Kitchen", icon: "🍳" },
-            { time: "11:30 AM", title: “Breakfast”, location: "Trailhead", icon: "🥾" },
-            { time: "1:30 PM", title: “Reflection & Journaling”, location: "Town Square", icon: "🥪" },
-            { time: "7:30 PM", title: "Dinner (Warm and Fuzzy), location: "The Lodge", icon: "✨" }
+            { time: "7:00 AM", title: "Coffee and Conversations", location: "Kitchen", icon: "☕" },
+            { time: "11:30 AM", title: "Breakfast", location: "Trailhead", icon: "🍳" },
+            { time: "1:30 PM", title: "Reflection & Journaling", location: "Town Square", icon: "📖" },
+            { time: "7:30 PM", title: "Dinner (Warm and Fuzzy)", location: "The Lodge", icon: "✨" }
         ]
     },
     {
-        day: "Sunday, Jan 18”,
+        day: "Sunday, Jan 18",
         events: [
-            { time: "10:00 AM", title: “Coffee and Motivation”, location: "Main Cabin", icon: "🥞" },
-            { time: "12:00 PM", title: “Bonding/Sisterhood Activity”, location: "Safe Travels!", icon: "🏡" }
-	 { time: "12:00 PM", title: “Community Service Activity (Coat Drive), location: "Safe Travels!", icon: "🏡" }
-	 { time: "12:00 PM", title: “Dinner “and Dancing, location: "Safe Travels!", icon: "🏡" }
+            { time: "10:00 AM", title: "Coffee and Motivation", location: "Main Cabin", icon: "🥞" },
+            { time: "12:00 PM", title: "Bonding/Sisterhood Activity", location: "Cabin Lounge", icon: "💕" },
+            { time: "2:00 PM", title: "Community Service (Coat Drive)", location: "Donation Point", icon: "🧥" },
+            { time: "7:00 PM", title: "Dinner and Dancing", location: "The Lodge", icon: "💃" }
         ]
-    }
+    },
     {
-        day: "Sunday, Jan 19”,
+        day: "Monday, Jan 19",
         events: [
-            { time: “7:00 AM", title: “Coffee and Continental”, location: "Main Cabin", icon: "🥞" },
-            { time: “10:00 AM", title: “Check Out”, location: "Safe Travels!", icon: "🏡" }
+            { time: "7:00 AM", title: "Coffee and Continental", location: "Main Cabin", icon: "🥐" },
+            { time: "10:00 AM", title: "Check Out", location: "Safe Travels!", icon: "🏡" }
         ]
     }
 ];
