@@ -1,0 +1,46 @@
+/* Custom Styles for 2k6 Retreat App */
+
+/* 1. Custom Font (Optional: Using a clean sans-serif) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+
+:root {
+    --indigo-primary: #4f46e5;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    /* Prevents the 'bounce' effect when scrolling on iOS */
+    overscroll-behavior-y: none;
+}
+
+/* 2. Custom Timeline Styles (For Agenda) */
+#agenda-view {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 3. Navigation Active State Animation */
+.nav-item {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-item:active {
+    transform: scale(0.9);
+}
+
+/* 4. Glassmorphism effect for the header */
+header {
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}
+
+/* 5. Safe Area Fixes for Older Browsers */
+@supports not (padding-bottom: env(safe-area-inset-bottom)) {
+    .bottom-nav {
+        padding-bottom: 20px;
+    }
+}
