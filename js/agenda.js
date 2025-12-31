@@ -1,55 +1,67 @@
 /**
- * 2k6 Retreat - Trip Data & Generator
+ * 2k6 Retreat - Trip Itinerary Data
  */
 
 const retreatData = [
     {
-        day: "Friday, Oct 20",
+        day: "Friday, Jan 16” // Update to your real dates
         events: [
-            { time: "4:00 PM", title: "Arrival & Check-in", location: "The Blue Ridge Cabin", icon: "🚗" },
-            { time: "7:00 PM", title: "Welcome Dinner", location: "Main Deck", icon: "🍴" },
-            { time: "9:00 PM", title: "Fire Pit & S'mores", location: "Backyard", icon: "🔥" }
+            { time: “5:00 PM", title: "Arrival & Cabin Check-in", location: "Main Cabin", icon: "🚗" },
+            { time: "7:00 PM", title: “Welcome Reception”, location: “Main House”, icon: "🍴" },
         ]
     },
     {
-        day: "Saturday, Oct 21",
+        day: "Saturday, Jan 17”,
         events: [
-            { time: "9:00 AM", title: "Breakfast Bar", location: "Kitchen", icon: "☕" },
-            { time: "11:00 AM", title: "Group Hike", location: "Bear Trail Trailhead", icon: "🥾" },
-            { time: "2:00 PM", title: "Afternoon Leisure", location: "Games & Relaxation", icon: "🧘" },
-            { time: "7:00 PM", title: "Anniversary Gala", location: "Great Hall", icon: "✨" }
+            { time: “7:00 AM", title: “Coffee and Conversations”, location: "Kitchen", icon: "🍳" },
+            { time: "11:30 AM", title: “Breakfast”, location: "Trailhead", icon: "🥾" },
+            { time: "1:30 PM", title: “Reflection & Journaling”, location: "Town Square", icon: "🥪" },
+            { time: "7:30 PM", title: "Dinner (Warm and Fuzzy), location: "The Lodge", icon: "✨" }
+        ]
+    },
+    {
+        day: "Sunday, Jan 18”,
+        events: [
+            { time: "10:00 AM", title: “Coffee and Motivation”, location: "Main Cabin", icon: "🥞" },
+            { time: "12:00 PM", title: “Bonding/Sisterhood Activity”, location: "Safe Travels!", icon: "🏡" }
+	 { time: "12:00 PM", title: “Community Service Activity (Coat Drive), location: "Safe Travels!", icon: "🏡" }
+	 { time: "12:00 PM", title: “Dinner “and Dancing, location: "Safe Travels!", icon: "🏡" }
+        ]
+    }
+    {
+        day: "Sunday, Jan 19”,
+        events: [
+            { time: “7:00 AM", title: “Coffee and Continental”, location: "Main Cabin", icon: "🥞" },
+            { time: “10:00 AM", title: “Check Out”, location: "Safe Travels!", icon: "🏡" }
         ]
     }
 ];
 
-// Function to render the agenda into the HTML
 function renderAgenda() {
     const container = document.getElementById('agenda-view');
     if (!container) return;
 
-    let html = `<h2 class="text-3xl font-extrabold mb-8 text-slate-800">Trip Agenda</h2>`;
+    let html = `<h2 class="text-3xl font-extrabold mb-8 text-slate-800 tracking-tight">Trip Agenda</h2>`;
 
     retreatData.forEach(day => {
         html += `
-            <div class="mb-10">
-                <h3 class="text-lg font-bold text-indigo-600 mb-4 sticky top-16 bg-slate-50 py-2">${day.day}</h3>
-                <div class="space-y-6 border-l-2 border-slate-200 ml-3">
+            <div class="mb-10 relative">
+                <h3 class="text-sm font-black text-indigo-600 uppercase tracking-widest mb-6 sticky top-[72px] bg-slate-50/90 backdrop-blur-sm py-2 z-10">${day.day}</h3>
+                <div class="space-y-8 ml-3 border-l-2 border-slate-200">
         `;
 
         day.events.forEach(event => {
             html += `
                 <div class="relative pl-8">
-                    <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white border-4 border-indigo-500"></div>
-                    
-                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100">
-                        <div class="flex justify-between items-start">
-                            <span class="text-xs font-bold uppercase tracking-widest text-slate-400">${event.time}</span>
-                            <span class="text-lg">${event.icon}</span>
+                    <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white border-4 border-indigo-500 shadow-sm"></div>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 active:scale-[0.98] transition-transform">
+                        <div class="flex justify-between items-start mb-1">
+                            <span class="text-[10px] font-black uppercase tracking-tighter text-slate-400">${event.time}</span>
+                            <span class="text-xl">${event.icon}</span>
                         </div>
-                        <h4 class="text-md font-bold text-slate-800 mt-1">${event.title}</h4>
-                        <p class="text-sm text-slate-500 flex items-center mt-1">
-                            <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                            ${event.location}
+                        <h4 class="text-md font-bold text-slate-800 leading-tight">${event.title}</h4>
+                        <p class="text-xs text-slate-500 mt-1 font-medium flex items-center">
+                            <span class="mr-1 opacity-50">📍</span> ${event.location}
                         </p>
                     </div>
                 </div>
@@ -62,5 +74,4 @@ function renderAgenda() {
     container.innerHTML = html;
 }
 
-// Run the render function when the script loads
 document.addEventListener('DOMContentLoaded', renderAgenda);
