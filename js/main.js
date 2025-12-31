@@ -33,12 +33,16 @@ function navigate(pageId) {
 
 // 2. Map Logic
 
-function openMap(type) {
+    function openMap(type) {
+    // The real address for the cabin
     const address = encodeURIComponent("123 Bear Peak Overlook, Blue Ridge, GA 30513");
+    
     if (type === 'apple') {
-        window.location.href = `maps://maps.apple.com/?q=${address}`;
+        // Universal Link - Works best in PWAs
+        window.open(`https://maps.apple.com/?q=${address}`, '_blank');
     } else {
-        window.location.href = `https://www.google.com/maps/search/?api=1&query=${address}`;
+        // Standard Google Maps Link
+        window.open(`https://www.google.com/maps/search/?api=1&query=${address}`, '_blank');
     }
 }
 
