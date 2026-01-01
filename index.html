@@ -115,78 +115,132 @@
             </section>
 
         <section id="travel-view" class="hidden">
-            <h2 class="text-3xl font-extrabold mb-6 text-slate-800">Travel</h2>
-            <div class="space-y-4">
-                <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
-                    <h4 class="font-black text-red-700 uppercase text-[10px] tracking-widest mb-3">Cabin Address</h4>
-                    <p class="font-bold text-lg text-slate-800 leading-tight mb-6">
-                        808 High river Road<br>Elijay, GA 30540
+            <div class="space-y-6">
+                <h2 class="text-3xl font-extrabold text-slate-800 tracking-tight">Travel & Cabin</h2>
+        
+                <div class="glass-card p-6 rounded-[2.5rem] border border-white shadow-sm">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-red-700 text-[10px] font-black uppercase px-2 py-1 rounded text-white">The Destination</span>
+                        <span class="text-2xl">🏔️</span>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold text-slate-800 mb-1">High River Retreat</h3>
+                    <p class="text-sm text-slate-500 mb-6 font-medium leading-relaxed">
+                        808 High River Road<br>Ellijay, GA 30540
                     </p>
-                    <div class="flex flex-col space-y-3">
-                        <button onclick="openMap('apple')" class="w-full bg-slate-900 text-white py-4 rounded-2xl text-sm font-bold shadow-md active:scale-95 transition-all">
-                            Open in Apple Maps
+        
+                    <div class="grid grid-cols-2 gap-3">
+                        <button onclick="openMap('apple')" class="flex items-center justify-center space-x-2 bg-slate-800 text-white py-4 rounded-2xl text-xs font-bold active:scale-95 transition-all">
+                            <span>🍎 Apple Maps</span>
                         </button>
-                        <button onclick="openMap('google')" class="w-full bg-white border border-slate-200 text-slate-800 py-4 rounded-2xl text-sm font-bold active:scale-95 transition-all">
-                            Open in Google Maps
+                        <button onclick="openMap('google')" class="flex items-center justify-center space-x-2 bg-white border border-slate-200 text-slate-800 py-4 rounded-2xl text-xs font-bold active:scale-95 transition-all shadow-sm">
+                            <span>🌍 Google Maps</span>
                         </button>
                     </div>
                 </div>
-
-                <div class="bg-amber-50 border border-amber-100 p-5 rounded-2xl">
-                    <p class="text-amber-800 text-xs leading-relaxed">
-                        <strong>Note:</strong> GPS can be spotty in the last 2 miles. We recommend downloading the map for offline use before you leave town!
-                    </p>
+        
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100">
+                        <p class="text-[10px] font-black text-red-700 uppercase mb-2">Check-In</p>
+                        <p class="text-lg font-bold text-slate-800">Fri, 5:00 PM</p>
+                        <p class="text-[10px] text-slate-400 font-bold uppercase mt-1 italic">Door Code: 1913#</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100">
+                        <p class="text-[10px] font-black text-slate-400 uppercase mb-2">Check-Out</p>
+                        <p class="text-lg font-bold text-slate-800">Mon, 10:00 AM</p>
+                        <p class="text-[10px] text-slate-400 font-bold uppercase mt-1 italic">Safe Travels!</p>
+                    </div>
+                </div>
+        
+                <div class="bg-slate-800 p-6 rounded-[2.5rem] text-white shadow-xl">
+                    <h4 class="font-bold text-lg mb-2 flex items-center">
+                        <span class="mr-2">🚗</span> Parking & Arrival
+                    </h4>
+                    <ul class="space-y-3 text-xs text-slate-300 font-medium leading-relaxed">
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-2">•</span>
+                            Parking is limited; please carpool from Ellijay if possible.
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-2">•</span>
+                            High River is a gated community. Ensure you have the gate code (if applicable).
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-2">•</span>
+                            Cell service can be spotty in the mountains. Please save the address offline.
+                        </li>
+                    </ul>
                 </div>
             </div>
         </section>
 
 <section id="contact-view" class="hidden">
-    <h2 class="text-3xl font-extrabold mb-6 text-slate-800">Contacts</h2>
-    <div class="space-y-4">
+    <div class="space-y-6">
+        <h2 class="text-3xl font-extrabold text-slate-800 tracking-tight">Retreat Coordination</h2>
         
-        <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100">
-            <div class="flex items-center space-x-4 mb-4">
-                <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center text-xl">👑</div>
+        <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100 flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <div class="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center text-2xl text-red-700 font-bold">SB</div>
                 <div>
                     <p class="font-bold text-slate-800 text-lg">Shante Brown</p>
-                    <p class="text-xs text-slate-500 font-bold uppercase tracking-widest">Retreat Coordinator</p>
+                    <p class="text-xs text-slate-500 font-medium uppercase tracking-widest">Co-Chair</p>
                 </div>
             </div>
-            
-            <div class="grid grid-cols-2 gap-3">
-                <a href="tel:4782133808" class="flex items-center justify-center space-x-2 bg-red-700 text-white py-3 rounded-2xl text-sm font-bold active:scale-95 transition-all">
-                    <span>Call</span>
-                </a>
-                <a href="sms:4782133808" class="flex items-center justify-center space-x-2 bg-slate-100 text-slate-700 py-3 rounded-2xl text-sm font-bold active:scale-95 transition-all">
-                    <span>Text</span>
-                </a>
+            <div class="flex space-x-2">
+                <a href="sms:4782133808" class="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center border border-slate-100 active:scale-90 transition-transform">💬</a>
+                <a href="tel:4782133808" class="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center border border-slate-100 active:scale-90 transition-transform">📞</a>
             </div>
         </div>
 
+        <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100 flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <div class="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center text-2xl text-red-700 font-bold">CM</div>
+                <div>
+                    <p class="font-bold text-slate-800 text-lg">Crystal McCorkle</p>
+                    <p class="text-xs text-slate-500 font-medium uppercase tracking-widest">Logistics</p>
+                </div>
+            </div>
+            <div class="flex space-x-2">
+                <a href="sms:4048584657" class="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center border border-slate-100 active:scale-90 transition-transform">💬</a>
+                <a href="tel:4048584657" class="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center border border-slate-100 active:scale-90 transition-transform">📞</a>
+            </div>
+        </div>
+
+        <div class="p-6 glass-card rounded-[2rem] text-center mt-10">
+            <p class="text-xs text-slate-400 font-bold uppercase tracking-widest mb-2">Emergency Services</p>
+            <p class="text-xl font-black text-slate-800">Dial 911</p>
+            <p class="text-[10px] text-slate-500 mt-2 italic">808 High River Road, Ellijay, GA</p>
+        </div>
     </div>
 </section>
 
     </main>
 
-    <nav class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-slate-100 bottom-nav z-50">
-        <div class="flex justify-around items-center h-16 max-w-md mx-auto px-4">
-            <button onclick="navigate('home')" class="nav-btn flex flex-col items-center flex-1 text-red-700">
-                <span class="text-xl">🏠</span>
-                <span class="text-[10px] font-bold uppercase mt-1 tracking-tighter">Home</span>
-            </button>
-            <button onclick="navigate('agenda')" class="nav-btn flex flex-col items-center flex-1 text-slate-400">
-                <span class="text-xl">📅</span>
-                <span class="text-[10px] font-bold uppercase mt-1 tracking-tighter">Agenda</span>
-            </button>
-            <button onclick="navigate('travel')" class="nav-btn flex flex-col items-center flex-1 text-slate-400">
-                <span class="text-xl">📍</span>
-                <span class="text-[10px] font-bold uppercase mt-1 tracking-tighter">Travel</span>
-            </button>
-            <button onclick="navigate('contact')" class="nav-btn flex flex-col items-center flex-1 text-slate-400">
-                <span class="text-xl">💬</span>
-                <span class="text-[10px] font-bold uppercase mt-1 tracking-tighter">Contact</span>
-            </button>
-        </div>
+    <nav class="fixed bottom-0 left-0 right-0 bottom-nav border-t border-slate-100 px-2 flex justify-around items-center z-50">
+        <button onclick="navigate('home')" class="nav-btn flex flex-col items-center flex-1">
+            <span class="text-lg">🏠</span>
+            <span class="text-[9px] font-black uppercase mt-1">Home</span>
+        </button>
+        
+        <button onclick="navigate('agenda')" class="nav-btn flex flex-col items-center flex-1 text-slate-400">
+            <span class="text-lg">📅</span>
+            <span class="text-[9px] font-black uppercase mt-1">Agenda</span>
+        </button>
+    
+        <button onclick="navigate('gallery')" class="nav-btn flex flex-col items-center flex-1 text-slate-400">
+            <span class="text-lg">📸</span>
+            <span class="text-[9px] font-black uppercase mt-1">Gallery</span>
+        </button>
+    
+        <button onclick="navigate('travel')" class="nav-btn flex flex-col items-center flex-1 text-slate-400">
+            <span class="text-lg">🗺️</span>
+            <span class="text-[9px] font-black uppercase mt-1">Travel</span>
+        </button>
+    
+        <button onclick="navigate('contact')" class="nav-btn flex flex-col items-center flex-1 text-slate-400">
+            <span class="text-lg">👑</span>
+            <span class="text-[9px] font-black uppercase mt-1">Contact</span>
+        </button>
     </nav>
 
     <script src="js/main.js"></script>
