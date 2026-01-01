@@ -39,7 +39,10 @@ const retreatData = [
 
 function renderAgenda() {
     const container = document.getElementById('agenda-view');
-    if (!container) return;
+    if (!container) {
+        console.error("Target #agenda-view not found in HTML");
+        return;
+    }
 
     let html = `<h2 class="text-3xl font-extrabold mb-8 text-slate-800 tracking-tight">Trip Agenda</h2>`;
 
@@ -61,7 +64,7 @@ function renderAgenda() {
                         </div>
                         <h4 class="text-md font-bold text-slate-800 leading-tight">${event.title}</h4>
                         <p class="text-xs text-slate-500 mt-1 font-medium flex items-center">
-                            <span class="mr-1 opacity-50">📍</span> ${event.location}
+                            <span class="mr-1 opacity-50 text-[10px]">📍</span> ${event.location}
                         </p>
                     </div>
                 </div>
@@ -74,4 +77,9 @@ function renderAgenda() {
     container.innerHTML = html;
 }
 
-document.addEventListener('DOMContentLoaded', renderAgenda);
+// Robust Init
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderAgenda);
+} else {
+    renderAgenda();
+}
