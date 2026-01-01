@@ -10,27 +10,34 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/main.css">
         <style>
-            /* ... your other styles ... */
+            :root { --sab: env(safe-area-inset-bottom); }
             
-            html, body {
-                height: 100%;
+            /* Make the body allow normal scrolling again */
+            body { 
                 margin: 0;
-                overflow: hidden; /* Prevents the whole page from bouncing */
+                background-color: #f8fafc; /* slate-50 */
+                -webkit-tap-highlight-color: transparent;
             }
         
-            main {
-                height: 100vh;
-                overflow-y: scroll; /* Allows the content area to scroll independently */
-                -webkit-overflow-scrolling: touch;
-                padding-bottom: 15rem; /* Massive buffer so the last item clears the nav */
-            }
-        
-            .bottom-nav {
+            /* Adjust the nav bar height and layering */
+            .bottom-nav { 
                 position: fixed;
                 bottom: 0;
-                width: 100%;
-                z-index: 50;
+                left: 0;
+                right: 0;
+                height: calc(4rem + var(--sab)); 
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                border-t: 1px solid #f1f5f9;
+                z-index: 100; /* Ensure it's on the very top */
             }
+        
+            /* The Fix: Large padding on the content wrapper */
+            .content-wrapper {
+                padding-bottom: 250px !important; /* Huge empty space at the bottom of every page */
+            }
+        
+            .hidden { display: none; }
         </style>
 </head>
 <body class="bg-slate-50 text-slate-900 font-sans antialiased no-scrollbar">
