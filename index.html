@@ -4,135 +4,150 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>2k6 Sorority Retreat</title>
-    
     <meta name="theme-color" content="#990000">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="2k6 Retreat">
-    
-    <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="assets/icon-192.png">
-
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/main.css">
-
     <style>
-        /* Ensuring specific behavior for a standalone PWA feel */
         :root { --sab: env(safe-area-inset-bottom); }
         body { -webkit-tap-highlight-color: transparent; }
-        .bottom-nav { padding-bottom: var(--sab); height: calc(4.5rem + var(--sab)); }
+        .bottom-nav { padding-bottom: var(--sab); height: calc(5rem + var(--sab)); background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); }
         .hidden { display: none; }
-        
-        /* Smooth Fade In for sections */
         section { animation: fadeIn 0.3s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        main { padding-bottom: 8rem; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 font-sans antialiased no-scrollbar">
-
     <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 px-6 py-4">
         <div class="max-w-md mx-auto flex justify-between items-center">
             <h1 class="text-xl font-black tracking-tighter text-red-700">2K6 <span class="text-slate-800 uppercase text-xs tracking-widest ml-1">Retreat</span></h1>
             <span class="text-xl">⛰️</span>
         </div>
     </header>
-
-    <main id="app-content" class="max-w-md mx-auto p-6 pb-32">
-        
+    <main id="app-content" class="max-w-md mx-auto p-6">
         <section id="home-view">
             <div class="space-y-6">
-                <div class="relative h-72 rounded-[2.5rem] overflow-hidden shadow-2xl mb-8">
-                    <img src="assets/hero.jpg" class="absolute inset-0 w-full h-full object-cover" alt="Mountain Retreat">
-                    <div class="absolute inset-0 hero-gradient"></div>
+                <div class="relative h-72 rounded-[2.5rem] overflow-hidden shadow-2xl">
+                    <img src="assets/hero.jpg" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0" style="background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.8) 100%);"></div>
                     <div class="absolute bottom-8 left-8 right-8 text-white">
                         <div class="flex items-center space-x-2 mb-3">
-                            <span class="bg-red-700 text-[10px] font-black uppercase px-2 py-1 rounded tracking-tighter">2K6 Lineage</span>
+                            <span class="bg-red-700 text-[10px] font-black uppercase px-2 py-1 rounded">2K6 Lineage</span>
                             <span class="text-[10px] font-bold uppercase tracking-widest opacity-90 border-b border-red-500">ELLIJAY 2026</span>
                         </div>
-                        <h2 class="text-4xl font-black leading-tight italic">
-                            Relax, Relate, Release <br><span class="text-red-500 not-italic uppercase tracking-tighter">RETREAT</span>
-                        </h2>
+                        <h2 class="text-4xl font-black leading-tight italic">Relax, Relate, Release <br><span class="text-red-500 not-italic uppercase tracking-tighter">RETREAT</span></h2>
                     </div>
                 </div>
-
-                <div class="text-center py-2">
-                    <p id="countdown-timer" class="text-xs font-black uppercase tracking-[0.2em] text-red-700 animate-pulse"></p>
-                </div>
-
-                <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 mt-6">
-                    <h3 class="font-bold text-lg mb-4 text-slate-800 flex items-center">
-                        <span class="mr-2">🎒</span> Packing Essentials
-                    </h3>
+                <div class="text-center py-2"><p id="countdown-timer" class="text-xs font-black uppercase tracking-[0.2em] text-red-700 animate-pulse"></p></div>
+                <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+                    <h3 class="font-bold text-lg mb-4 text-slate-800 flex items-center">🎒 Packing Essentials</h3>
                     <ul class="grid grid-cols-1 gap-2 text-sm text-slate-600">
                         <li class="flex items-center"><input type="checkbox" class="mr-3 w-4 h-4 accent-red-700"> Warm Layers / Coat or Jacket</li>
                         <li class="flex items-center"><input type="checkbox" class="mr-3 w-4 h-4 accent-red-700"> Yoga Mat + Attire</li>
-                        <li class="flex items-center"><input type="checkbox" class="mr-3 w-4 h-4 accent-red-700"> Reusable water bottle</li>
-                        <li class="flex items-center"><input type="checkbox" class="mr-3 w-4 h-4 accent-red-700"> Libation of your choosing</li>
                         <li class="flex items-center"><input type="checkbox" class="mr-3 w-4 h-4 accent-red-700"> Red Sweater for photo</li>
                         <li class="flex items-center"><input type="checkbox" class="mr-3 w-4 h-4 accent-red-700"> Fuzzy Onesie</li>
-                        <li class="flex items-center"><input type="checkbox" class="mr-3 w-4 h-4 accent-red-700"> Scrapbooking Stickers</li>
                     </ul>
-                </div>
-
-                <div class="grid grid-cols-2 gap-4 text-center">
-                    <div class="bg-red-50 p-4 rounded-2xl border border-red-100">
-                        <p class="text-[10px] uppercase font-black text-red-400 mb-1">Avg Temp</p>
-                        <p class="font-bold text-red-900 text-lg">55°F</p>
-                    </div>
-                    <div class="bg-slate-100 p-4 rounded-2xl border border-slate-200">
-                        <p class="text-[10px] uppercase font-black text-slate-400 mb-1">Dress Code</p>
-                        <p class="font-bold text-slate-900 text-lg">Cozy</p>
-                    </div>
-                </div>
-
-                <div class="mt-6 space-y-3">
-                    <h3 class="font-bold text-lg px-2 text-slate-800">Common Questions</h3>
-                    <details class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm group">
-                        <summary class="list-none font-bold text-sm flex justify-between items-center cursor-pointer">
-                            Is there WiFi at the cabin?
-                            <span class="group-open:rotate-180 transition-transform">▼</span>
-                        </summary>
-                        <p class="mt-3 text-sm text-slate-500 leading-relaxed">
-                            Yes. The password is <strong>2k6anniversary</strong>.
-                        </p>
-                    </details>
-                    <details class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm group">
-                        <summary class="list-none font-bold text-sm flex justify-between items-center cursor-pointer">
-                            What about groceries?
-                            <span class="group-open:rotate-180 transition-transform">▼</span>
-                        </summary>
-                        <p class="mt-3 text-sm text-slate-500 leading-relaxed">
-                            All meals provided. Publix is 20 mins away for personal snacks.
-                        </p>
-                    </details>
                 </div>
             </div>
         </section>
-
-        <section id="agenda-view" class="hidden"></section>
+        <section id="agenda-view" class="hidden">
+            <h2 class="text-3xl font-extrabold text-slate-800 tracking-tight mb-6">Itinerary</h2>
+            <div id="agenda-container"></div>
+        </section>
 
         <section id="gallery-view" class="hidden">
             <div class="space-y-6">
                 <h2 class="text-3xl font-extrabold text-slate-800 tracking-tight">Sisterhood Gallery</h2>
-                <div class="relative h-48 rounded-[2rem] overflow-hidden shadow-lg mb-4">
-                    <img src="assets/hero.jpg" class="absolute inset-0 w-full h-full object-cover opacity-40 blur-sm">
-                    <div class="absolute inset-0 bg-red-900/20 flex flex-col items-center justify-center text-center p-6">
-                        <span class="text-4xl mb-2">📸</span>
-                        <p class="text-white font-bold text-lg leading-tight uppercase">2K6 Memories</p>
-                        <p class="text-white/80 text-xs font-bold tracking-widest uppercase">Shared Album</p>
-                    </div>
-                </div>
                 <div class="space-y-4">
-                    <a href="https://photos.app.goo.gl/W8XiB9ucBarVG6mR8" target="_blank" class="flex items-center justify-between bg-white p-6 rounded-3xl shadow-sm border border-slate-100 active:scale-95 transition-all">
+                    <a href="https://photos.app.goo.gl/W8XiB9ucBarVG6mR8" target="_blank" class="flex items-center justify-between bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
                         <div class="flex items-center space-x-4">
                             <div class="w-12 h-12 bg-red-50 rounded-2xl flex items-center justify-center text-2xl">📤</div>
-                            <div class="text-left">
-                                <p class="font-bold text-slate-800 uppercase tracking-tighter text-sm">Upload Photos</p>
-                                <p class="text-[10px] text-slate-500 font-bold uppercase">Add your shots</p>
-                            </div>
+                            <div><p class="font-bold text-slate-800 text-sm uppercase">Upload Photos</p><p class="text-[10px] text-slate-500 font-bold uppercase">Add your shots</p></div>
                         </div>
                         <span class="text-slate-300">→</span>
                     </a>
-                    <a href="https://photos.app.goo.gl/W8XiB9ucBarVG6mR8" target="_blank" class="flex items-center justify-between bg-white p-6 rounded-3xl shadow-sm border border-slate-100 active:scale-95 transition-all">
+                    <a href="https://photos.app.goo.gl/W8XiB9ucBarVG6mR8" target="_blank" class="flex items-center justify-between bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
                         <div class="flex items-center space-x-4">
-                            <div class="w-12 h
+                            <div class="w-12 h-12 bg-red-700 rounded-2xl flex items-center justify-center text-2xl text-white">🖼️</div>
+                            <div><p class="font-bold text-slate-800 text-sm uppercase">View Gallery</p><p class="text-[10px] text-slate-500 font-bold uppercase">See all memories</p></div>
+                        </div>
+                        <span class="text-slate-300">→</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="travel-view" class="hidden">
+            <div class="space-y-6">
+                <h2 class="text-3xl font-extrabold text-slate-800 tracking-tight">Travel & Cabin</h2>
+                <div class="bg-white p-6 rounded-[2.5rem] border border-slate-100 shadow-sm">
+                    <h3 class="text-xl font-bold text-slate-800 mb-1">High River Retreat</h3>
+                    <p class="text-sm text-slate-500 mb-6">808 High River Road<br>Ellijay, GA 30540</p>
+                    <div class="grid grid-cols-2 gap-3">
+                        <button onclick="openMap('apple')" class="bg-slate-800 text-white py-4 rounded-2xl text-xs font-bold">🍎 Apple Maps</button>
+                        <button onclick="openMap('google')" class="bg-white border border-slate-200 text-slate-800 py-4 rounded-2xl text-xs font-bold shadow-sm">🌍 Google Maps</button>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white p-5 rounded-3xl border border-slate-100">
+                        <p class="text-[10px] font-black text-red-700 uppercase mb-1">Check-In</p>
+                        <p class="text-lg font-bold">Fri, 5:00 PM</p>
+                        <p class="text-[10px] text-slate-400 font-bold uppercase italic mt-1">Code: 1913#</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-3xl border border-slate-100">
+                        <p class="text-[10px] font-black text-slate-400 uppercase mb-1">Check-Out</p>
+                        <p class="text-lg font-bold">Mon, 10:00 AM</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="contact-view" class="hidden">
+            <div class="space-y-6">
+                <h2 class="text-3xl font-extrabold text-slate-800 tracking-tight">Retreat Leads</h2>
+                <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100 flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center text-red-700 font-bold uppercase text-xl">SB</div>
+                        <div><p class="font-bold text-slate-800 text-lg">Shante Brown</p><p class="text-xs text-slate-500 uppercase tracking-widest">Co-Chair</p></div>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="sms:4782133808" class="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center border border-slate-100">💬</a>
+                        <a href="tel:4782133808" class="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center border border-slate-100">📞</a>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100 flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center text-red-700 font-bold uppercase text-xl">CM</div>
+                        <div><p class="font-bold text-slate-800 text-lg">Crystal McCorkle</p><p class="text-xs text-slate-500 uppercase tracking-widest">Logistics</p></div>
+                    </div>
+                    <div class="flex space-x-2">
+                        <a href="sms:4048584657" class="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center border border-slate-100">💬</a>
+                        <a href="tel:4048584657" class="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center border border-slate-100">📞</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <nav class="fixed bottom-0 left-0 right-0 bottom-nav border-t border-slate-100 px-2 flex justify-around items-center z-50">
+        <button onclick="navigate('home')" class="nav-btn flex flex-col items-center flex-1">
+            <span class="text-lg">🏠</span><span class="text-[9px] font-black uppercase mt-1">Home</span>
+        </button>
+        <button onclick="navigate('agenda')" class="nav-btn flex flex-col items-center flex-1 text-slate-400">
+            <span class="text-lg">📅</span><span class="text-[9px] font-black uppercase mt-1">Agenda</span>
+        </button>
+        <button onclick="navigate('gallery')" class="nav-btn flex flex-col items-center flex-1 text-slate-400">
+            <span class="text-lg">📸</span><span class="text-[9px] font-black uppercase mt-1">Gallery</span>
+        </button>
+        <button onclick="navigate('travel')" class="nav-btn flex flex-col items-center flex-1 text-slate-400">
+            <span class="text-lg">🗺️</span><span class="text-[9px] font-black uppercase mt-1">Travel</span>
+        </button>
+        <button onclick="navigate('contact')" class="nav-btn flex flex-col items-center flex-1 text-slate-400">
+            <span class="text-lg">👑</span><span class="text-[9px] font-black uppercase mt-1">Contact</span>
+        </button>
+    </nav>
+    <script src="js/agenda.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
