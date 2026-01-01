@@ -160,27 +160,63 @@
         </section>
 
         <section id="travel-view" class="hidden">
-            <div class="space-y-6">
+            <div class="space-y-6 pb-32">
                 <h2 class="text-3xl font-extrabold text-slate-800 tracking-tight">Travel & Cabin</h2>
+        
+                <div class="bg-gradient-to-br from-slate-900 to-slate-800 p-6 rounded-[2.5rem] shadow-xl border border-slate-700">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <p class="text-[10px] font-black text-red-500 uppercase tracking-[0.2em] mb-1">Ellijay Forecast</p>
+                            <h3 class="text-2xl font-bold text-white">Mountain Chill</h3>
+                        </div>
+                        <span class="text-4xl">🏔️</span>
+                    </div>
+                    
+                    <div class="grid grid-cols-3 gap-2">
+                        <div class="bg-white/5 rounded-2xl p-3 text-center border border-white/10">
+                            <p class="text-[9px] font-bold text-slate-400 uppercase">Fri</p>
+                            <p class="text-lg font-black text-white">48°</p>
+                            <p class="text-[9px] text-red-500">☁️</p>
+                        </div>
+                        <div class="bg-white/10 rounded-2xl p-3 text-center border border-red-500/30">
+                            <p class="text-[9px] font-bold text-slate-400 uppercase">Sat</p>
+                            <p class="text-lg font-black text-white">45°</p>
+                            <p class="text-[9px] text-red-500">☀️</p>
+                        </div>
+                        <div class="bg-white/5 rounded-2xl p-3 text-center border border-white/10">
+                            <p class="text-[9px] font-bold text-slate-400 uppercase">Sun</p>
+                            <p class="text-lg font-black text-white">50°</p>
+                            <p class="text-[9px] text-red-500">🌤️</p>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-[10px] text-slate-400 italic text-center uppercase tracking-widest">Bundle up, Sorors!</p>
+                </div>
+        
                 <div class="bg-white p-6 rounded-[2.5rem] border border-slate-100 shadow-sm">
-                    <h3 class="text-xl font-bold text-slate-800 mb-1">High River Retreat</h3>
-                    <p class="text-sm text-slate-500 mb-6">808 High River Road<br>Ellijay, GA 30540</p>
+                    <h3 class="text-xl font-bold text-slate-800 mb-1 text-center">High River Retreat</h3>
+                    <p class="text-sm text-slate-500 mb-6 text-center italic">808 High River Road<br>Ellijay, GA 30540</p>
                     <div class="grid grid-cols-2 gap-3">
-                        <button onclick="openMap('apple')" class="bg-slate-800 text-white py-4 rounded-2xl text-xs font-bold">🍎 Apple Maps</button>
-                        <button onclick="openMap('google')" class="bg-white border border-slate-200 text-slate-800 py-4 rounded-2xl text-xs font-bold shadow-sm">🌍 Google Maps</button>
+                        <button onclick="openMap('apple')" class="bg-slate-800 text-white py-4 rounded-2xl text-xs font-bold uppercase tracking-widest">🍎 Apple Maps</button>
+                        <button onclick="openMap('google')" class="bg-white border border-slate-200 text-slate-800 py-4 rounded-2xl text-xs font-bold shadow-sm uppercase tracking-widest">🌍 Google Maps</button>
                     </div>
                 </div>
+        
                 <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-white p-5 rounded-3xl border border-slate-100">
+                    <div class="bg-white p-5 rounded-3xl border border-slate-100 text-center">
                         <p class="text-[10px] font-black text-red-700 uppercase mb-1">Check-In</p>
                         <p class="text-lg font-bold">Fri, 5:00 PM</p>
-                        <p class="text-[10px] text-slate-400 font-bold uppercase italic mt-1">Code: 1913#</p>
+                        <div class="mt-2 py-1 bg-red-50 rounded-lg">
+                            <p class="text-[10px] text-red-700 font-bold uppercase tracking-tighter">Gate Code: 1913#</p>
+                        </div>
                     </div>
-                    <div class="bg-white p-5 rounded-3xl border border-slate-100">
+                    <div class="bg-white p-5 rounded-3xl border border-slate-100 text-center">
                         <p class="text-[10px] font-black text-slate-400 uppercase mb-1">Check-Out</p>
                         <p class="text-lg font-bold">Mon, 10:00 AM</p>
+                        <p class="text-[10px] text-slate-400 italic mt-2">Safe Travels!</p>
                     </div>
                 </div>
+                
+                <div class="h-10"></div>
             </div>
         </section>
         <section id="contact-view" class="hidden">
