@@ -11,12 +11,26 @@
     <link rel="stylesheet" href="css/main.css">
     <style>
         :root { --sab: env(safe-area-inset-bottom); }
-        body { -webkit-tap-highlight-color: transparent; }
-        .bottom-nav { padding-bottom: var(--sab); height: calc(5rem + var(--sab)); background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); }
+        body { -webkit-tap-highlight-color: transparent; overflow-x: hidden; }
+        
+        /* Slimmer Nav Bar */
+        .bottom-nav { 
+            padding-bottom: var(--sab); 
+            height: calc(4rem + var(--sab)); 
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+        }
+    
+        /* Smooth Scrolling Container */
+        main { 
+            padding-bottom: 10rem; 
+            overflow-y: auto; 
+            -webkit-overflow-scrolling: touch; 
+        }
+    
         .hidden { display: none; }
         section { animation: fadeIn 0.3s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        main { padding-bottom: 8rem; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 font-sans antialiased no-scrollbar">
@@ -28,28 +42,23 @@
     </header>
     <main id="app-content" class="max-w-md mx-auto p-6">
         <section id="home-view">
-            <div class="space-y-6 pb-24">
-                
-                <div class="relative h-72 rounded-[2.5rem] overflow-hidden shadow-2xl">
+            <div class="space-y-6 pb-32"> <div class="relative h-72 rounded-[2.5rem] overflow-hidden shadow-2xl">
                     <img src="assets/hero.jpg" class="absolute inset-0 w-full h-full object-cover">
                     <div class="absolute inset-0" style="background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.8) 100%);"></div>
                     <div class="absolute bottom-8 left-8 right-8 text-white">
                         <div class="flex items-center space-x-2 mb-3">
-                            <span class="bg-red-700 text-[10px] font-black uppercase px-2 py-1 rounded tracking-tight">2K6 Lineage</span>
-                            <span class="text-[10px] font-bold uppercase tracking-widest opacity-90 border-b border-red-500">ELLIJAY 2026</span>
+                            <span class="bg-red-700 text-[10px] font-black uppercase px-2 py-1 rounded">2K6 Lineage</span>
                         </div>
-                        <h2 class="text-4xl font-black leading-tight italic">Relax, Relate, Release <br><span class="text-red-500 not-italic uppercase tracking-tighter">RETREAT</span></h2>
+                        <h2 class="text-4xl font-black italic">Relax, Relate, Release</h2>
                     </div>
                 </div>
-
+        
                 <div class="text-center py-2">
                     <p id="countdown-timer" class="text-xs font-black uppercase tracking-[0.2em] text-red-700 animate-pulse"></p>
                 </div>
-
+        
                 <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-slate-100">
-                    <h3 class="font-bold text-lg mb-4 text-slate-800 flex items-center">
-                        <span class="mr-2 text-red-700">🎒</span> Packing Essentials
-                    </h3>
+                    <h3 class="font-bold text-lg mb-4 text-slate-800 flex items-center">🎒 Packing Essentials</h3>
                     <ul class="grid grid-cols-1 gap-3 text-sm text-slate-600">
                         <li class="flex items-center"><input type="checkbox" class="mr-3 w-4 h-4 accent-red-700"> Warm Layers / Coat or Jacket</li>
                         <li class="flex items-center"><input type="checkbox" class="mr-3 w-4 h-4 accent-red-700"> Yoga Mat + Attire</li>
@@ -60,37 +69,52 @@
                         <li class="flex items-center"><input type="checkbox" class="mr-3 w-4 h-4 accent-red-700"> Fuzzy Onesie</li>
                     </ul>
                 </div>
-
+        
                 <div class="space-y-3">
-                    <h3 class="font-bold text-lg px-2 text-slate-800 flex items-center">
-                        <span class="mr-2 text-red-700">❓</span> Common Questions
-                    </h3>
+                    <h3 class="font-bold text-lg px-2 text-slate-800">❓ Common Questions</h3>
                     
-                    <details class="bg-white p-5 rounded-[2rem] border border-slate-100 shadow-sm group transition-all duration-300">
-                        <summary class="list-none font-bold text-sm flex justify-between items-center cursor-pointer text-slate-700">
+                    <details class="bg-white p-5 rounded-[2rem] border border-slate-100 shadow-sm group">
+                        <summary class="list-none font-bold text-sm flex justify-between items-center cursor-pointer">
                             Is there WiFi at the cabin?
-                            <span class="group-open:rotate-180 transition-transform duration-300 text-red-700">▼</span>
+                            <span class="group-open:rotate-180 transition-transform text-red-700">▼</span>
                         </summary>
-                        <div class="mt-4 pt-4 border-t border-slate-50">
-                            <p class="text-sm text-slate-500">
-                                Yes. Password: <span class="font-black text-red-700 bg-red-50 px-2 py-0.5 rounded">2k6anniversary</span>
-                            </p>
-                        </div>
+                        <p class="mt-4 pt-4 border-t border-slate-50 text-sm text-slate-500">
+                            Yes. Password: <span class="font-bold text-red-700">2k6anniversary</span>
+                        </p>
                     </details>
-
-                    <details class="bg-white p-5 rounded-[2rem] border border-slate-100 shadow-sm group transition-all duration-300">
-                        <summary class="list-none font-bold text-sm flex justify-between items-center cursor-pointer text-slate-700">
+        
+                    <details class="bg-white p-5 rounded-[2rem] border border-slate-100 shadow-sm group">
+                        <summary class="list-none font-bold text-sm flex justify-between items-center cursor-pointer">
                             What about groceries?
-                            <span class="group-open:rotate-180 transition-transform duration-300 text-red-700">▼</span>
+                            <span class="group-open:rotate-180 transition-transform text-red-700">▼</span>
                         </summary>
-                        <div class="mt-4 pt-4 border-t border-slate-50">
-                            <p class="text-sm text-slate-500 leading-relaxed">
-                                All meals will be provided by the committee. There is a <span class="font-bold text-slate-700">Publix</span> about 20 minutes away for any specific personal snacks.
-                            </p>
-                        </div>
+                        <p class="mt-4 pt-4 border-t border-slate-50 text-sm text-slate-500">All meals provided. Publix is 20 mins away.</p>
+                    </details>
+        
+                    <details class="bg-white p-5 rounded-[2rem] border border-slate-100 shadow-sm group">
+                        <summary class="list-none font-bold text-sm flex justify-between items-center cursor-pointer">
+                            What is the arrival time?
+                            <span class="group-open:rotate-180 transition-transform text-red-700">▼</span>
+                        </summary>
+                        <p class="mt-4 pt-4 border-t border-slate-50 text-sm text-slate-500">Check-in begins at 5:00 PM on Friday.</p>
+                    </details>
+        
+                    <details class="bg-white p-5 rounded-[2rem] border border-slate-100 shadow-sm group">
+                        <summary class="list-none font-bold text-sm flex justify-between items-center cursor-pointer">
+                            Parking Situation?
+                            <span class="group-open:rotate-180 transition-transform text-red-700">▼</span>
+                        </summary>
+                        <p class="mt-4 pt-4 border-t border-slate-50 text-sm text-slate-500">Space is limited. Carpooling is highly encouraged!</p>
+                    </details>
+        
+                    <details class="bg-white p-5 rounded-[2rem] border border-slate-100 shadow-sm group">
+                        <summary class="list-none font-bold text-sm flex justify-between items-center cursor-pointer">
+                            Emergency Contact?
+                            <span class="group-open:rotate-180 transition-transform text-red-700">▼</span>
+                        </summary>
+                        <p class="mt-4 pt-4 border-t border-slate-50 text-sm text-slate-500">Please contact Shante or Crystal via the Contact tab.</p>
                     </details>
                 </div>
-
             </div>
         </section>
         <section id="agenda-view" class="hidden">
