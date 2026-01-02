@@ -320,22 +320,27 @@
                     </div>
                 </div>
         
-                <div id="trivia-card" class="bg-white p-8 rounded-[3rem] shadow-xl border border-slate-100 relative overflow-hidden min-h-[300px]">
-                    <div id="timer-bar" class="absolute top-0 left-0 h-1 bg-red-600 transition-all linear" style="width: 100%"></div>
+                <div class="bg-white p-8 rounded-[2.5rem] shadow-xl border border-slate-100 relative overflow-hidden min-h-[350px]">
+                    <div id="timer-bar" class="absolute top-0 left-0 h-1 bg-red-600" style="width: 100%"></div>
                     
                     <div id="game-engine-surface">
                         <div class="text-center py-10">
-                            <p class="text-slate-400 animate-pulse uppercase text-[10px] font-bold tracking-widest">Initializing System...</p>
+                            <h3 class="text-xl font-bold text-slate-800 mb-6">Ready for your mission?</h3>
+                            <button onclick="startTrivia()" class="bg-red-700 text-white px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-xs shadow-lg active:scale-95 transition-transform">
+                                Start Game
+                            </button>
                         </div>
                     </div>
         
                     <div id="trivia-feedback" class="hidden text-center py-4">
-                        <p id="feedback-text" class="font-bold mb-4"></p>
-                        <button onclick="loadNextQuestion()" class="bg-slate-800 text-white px-6 py-2 rounded-xl text-xs font-black uppercase">Next Question</button>
+                        <p id="feedback-text" class="text-2xl font-black mb-6 italic"></p>
+                        <button onclick="loadNextQuestion()" class="bg-slate-800 text-white px-8 py-3 rounded-xl font-black uppercase text-xs">
+                            Next Question
+                        </button>
                     </div>
                 </div>
         
-                <button onclick="showTab('home')" class="w-full text-[10px] font-bold text-slate-400 uppercase py-4 tracking-widest underline">Exit Mission</button>
+                <button onclick="showTab('home')" class="w-full text-[10px] font-bold text-slate-400 uppercase tracking-widest underline">Exit Mission</button>
             </div>
         </section>    
 
@@ -389,11 +394,20 @@ function showTab(tabId) {
 
 // 4. TRIVIA ENGINE
 function startTrivia() {
-    currentQIndex = 0;
-    score = 0;
-    document.getElementById('trivia-score').innerText = "0";
-    loadNextQuestion();
-}
+    // Reset game state
+        currentQIndex = 0;
+        score = 0;
+        
+        // Update Score UI
+        const scoreDisplay = document.getElementById('trivia-score');
+        if(scoreDisplay) scoreDisplay.innerText = "0";
+        
+        // Ensure feedback is hidden
+        document.getElementById('trivia-feedback').classList.add('hidden');
+        
+        // Start the first question
+        loadNextQuestion();
+    }
 
 function loadNextQuestion() {
     const surface = document.getElementById('game-engine-surface');
