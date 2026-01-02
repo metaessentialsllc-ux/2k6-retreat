@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <script>
-        const LATEST_VERSION = '1.0.3'; 
+        const LATEST_VERSION = '1.0.4'; 
         (function() {
             const savedVersion = localStorage.getItem('retreat_app_version');
             if (savedVersion !== LATEST_VERSION) {
@@ -21,7 +21,7 @@
         })();
     </script>
 
-    <link rel="manifest" href="manifest.json?v=1.0.3">
+    <link rel="manifest" href="manifest.json?v=1.0.4">
     <link rel="apple-touch-icon" href="assets/icon-192.png">
     <meta name="theme-color" content="#b91c1c">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -308,14 +308,32 @@
         </section>
 
         <section id="scavenger-view" class="hidden">
-            <div class="space-y-6 px-6 pt-6 content-wrapper text-center">
-                <h2 class="text-3xl font-black text-slate-800 tracking-tight mb-4 uppercase">Secret Mission</h2>
-                <div class="bg-red-700 p-8 rounded-[3rem] text-white shadow-2xl">
-                    <p class="text-sm italic leading-relaxed">Scavenger Hunt details will be unlocked upon arrival.</p>
+            <div class="space-y-6 px-6 pt-6 content-wrapper">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-3xl font-black text-slate-800 tracking-tight">Mission: Trivia</h2>
+                    <div class="bg-red-700 text-white px-4 py-1 rounded-full text-xs font-bold">
+                        Score: <span id="trivia-score">0</span>
+                    </div>
                 </div>
-                <button onclick="showTab('home')" class="mt-8 text-[10px] font-bold text-slate-400 uppercase tracking-widest underline">Exit Mission</button>
+        
+                <div id="trivia-card" class="bg-white p-8 rounded-[3rem] shadow-xl border border-slate-100 relative overflow-hidden min-h-[300px]">
+                    <div id="timer-bar" class="absolute top-0 left-0 h-1 bg-red-600 transition-all linear" style="width: 100%"></div>
+                    
+                    <div id="game-engine-surface">
+                        <div class="text-center py-10">
+                            <p class="text-slate-400 animate-pulse uppercase text-[10px] font-bold tracking-widest">Initializing System...</p>
+                        </div>
+                    </div>
+        
+                    <div id="trivia-feedback" class="hidden text-center py-4">
+                        <p id="feedback-text" class="font-bold mb-4"></p>
+                        <button onclick="loadNextQuestion()" class="bg-slate-800 text-white px-6 py-2 rounded-xl text-xs font-black uppercase">Next Question</button>
+                    </div>
+                </div>
+        
+                <button onclick="showTab('home')" class="w-full text-[10px] font-bold text-slate-400 uppercase py-4 tracking-widest underline">Exit Mission</button>
             </div>
-        </section>
+        </section>    
 
     </main>
 
@@ -363,26 +381,38 @@
         function startTrivia() { document.getElementById('trivia-score').innerText = score; loadNextQuestion(); }
 
         function loadNextQuestion() {
-            const card = document.getElementById('question-content');
+            const surface = document.getElementById('game-engine-surface');
+            const feedback = document.getElementById('trivia-feedback');
+            
+            // Check if we are out of questions
             if (currentQIndex >= questions.length) {
                 const perfect = questions.length * 10;
-                card.innerHTML = score >= perfect ? `<div class="text-center py-10"><span class="text-6xl block">🐘</span><h3 class="text-3xl font-black text-red-700 italic">OO-OOP!</h3><p class="text-xl font-bold mt-2">Yesss girl! 💅✨</p></div>` : `<div class="text-center py-10"><h3 class="text-2xl font-bold">Done!</h3><p>Score: ${score}</p></div>`;
+                surface.innerHTML = score >= perfect 
+                    ? `<div class="text-center py-10"><span class="text-6xl block mb-4">🐘</span><h3 class="text-3xl font-black text-red-700 italic">OO-OOP!</h3><p class="text-xl font-bold mt-2">Yesss girl! 💅✨</p></div>` 
+                    : `<div class="text-center py-10"><h3 class="text-2xl font-bold">Mission Complete!</h3><p class="mt-2 text-slate-500">Final Score: ${score}</p><button onclick="currentQIndex=0; score=0; startTrivia();" class="mt-4 text-red-700 font-bold uppercase text-[10px]">Restart?</button></div>`;
                 return;
             }
+        
             const q = questions[currentQIndex];
-            document.getElementById('question-category').innerText = q.category;
-            document.getElementById('question-text').innerText = q.q;
-            document.getElementById('trivia-feedback').classList.add('hidden');
-            card.classList.remove('hidden');
+            feedback.classList.add('hidden');
+            surface.classList.remove('hidden');
+        
+            // Inject the Question and Buttons
+            surface.innerHTML = `
+                <p class="text-[10px] font-black text-red-700 uppercase tracking-widest mb-2">${q.category}</p>
+                <h3 class="text-xl font-bold text-slate-800 mb-6 leading-tight">${q.q}</h3>
+                <div id="answer-options" class="space-y-3"></div>
+            `;
+        
             const optionsDiv = document.getElementById('answer-options');
-            optionsDiv.innerHTML = '';
             q.options.forEach((opt, idx) => {
                 const btn = document.createElement('button');
-                btn.className = "w-full text-left p-4 rounded-2xl border border-slate-100 bg-slate-50 text-sm font-bold active:bg-red-50";
+                btn.className = "w-full text-left p-4 rounded-2xl border border-slate-100 bg-slate-50 text-sm font-bold active:bg-red-50 transition-all";
                 btn.innerText = opt;
                 btn.onclick = () => checkAnswer(idx);
                 optionsDiv.appendChild(btn);
             });
+        
             startTimer();
         }
 
