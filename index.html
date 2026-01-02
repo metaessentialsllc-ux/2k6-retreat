@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <script>
-        const LATEST_VERSION = '1.0.6'; 
+        const LATEST_VERSION = '1.0.7'; 
         (function() {
             const savedVersion = localStorage.getItem('retreat_app_version');
             if (savedVersion !== LATEST_VERSION) {
@@ -21,7 +21,7 @@
         })();
     </script>
 
-    <link rel="manifest" href="manifest.json?v=1.0.6">
+    <link rel="manifest" href="manifest.json?v=1.0.7">
     <link rel="apple-touch-icon" href="assets/icon-192.png">
     <meta name="theme-color" content="#b91c1c">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -361,116 +361,139 @@
 
     <script src="js/agenda.js?v=1.0.4"></script>
     <script>
-        const questions = [
-            { category: "At the Movies: 2k6", q: "In the 2006 film 'ATL', what was the name of the roller rink?", options: ["The Sparkle", "Cascade", "Skate Land", "The Palace"], correct: 1 },
-            { category: "At the Movies: 2k6", q: "Who won an Oscar for her film debut in 'Dreamgirls' (2006)?", options: ["Beyoncé", "Anika Noni Rose", "Jennifer Hudson", "Fantasia"], correct: 2 },
-            { category: "Black Cinema", q: "In 'Stomp the Yard', which fraternity was DJ Williams competing against?", options: ["Mu Gamma Xi", "Theta Nu Theta", "Sigma Gamma Rho", "Delta Sigma Theta"], correct: 0 },
-            { category: "2k6 Anthems", q: "This Yung Joc song had everyone 'flickin their wrists' in 2006.", options: ["Lean Wit It", "Shoulder Lean", "It's Goin' Down", "Snap Yo Fingers"], correct: 2 },
-            { category: "R&B Vibes", q: "Ne-Yo's first #1 single from 'In My Own Words' was:", options: ["Sexy Love", "Because of You", "Miss Independent", "So Sick"], correct: 3 },
-            { category: "Hip Hop Culture", q: "Which Houston artist had the whole world wearing 'Grillz' in 2006?", options: ["Chamillionaire", "Paul Wall", "Mike Jones", "Slim Thug"], correct: 1 },
-            { category: "Sisterhood & Music", q: "Cassie's 2006 hit song was titled:", options: ["Me & U", "Long Way 2 Go", "Official Girl", "Is It You"], correct: 0 }
-        ];
+        // 1. GAME DATA
+const questions = [
+    { category: "At the Movies: 2k6", q: "In the 2006 film 'ATL', what was the name of the roller rink?", options: ["The Sparkle", "Cascade", "Skate Land", "The Palace"], correct: 1 },
+    { category: "At the Movies: 2k6", q: "Who won an Oscar for her film debut in 'Dreamgirls' (2006)?", options: ["Beyoncé", "Anika Noni Rose", "Jennifer Hudson", "Fantasia"], correct: 2 },
+    { category: "Black Cinema", q: "In 'Stomp the Yard', which fraternity was DJ Williams competing against?", options: ["Mu Gamma Xi", "Theta Nu Theta", "Sigma Gamma Rho", "Delta Sigma Theta"], correct: 0 },
+    { category: "2k6 Anthems", q: "This Yung Joc song had everyone 'flickin their wrists' in 2006.", options: ["Lean Wit It", "Shoulder Lean", "It's Goin' Down", "Snap Yo Fingers"], correct: 2 },
+    { category: "R&B Vibes", q: "Ne-Yo's first #1 single from 'In My Own Words' was:", options: ["Sexy Love", "Because of You", "Miss Independent", "So Sick"], correct: 3 },
+    { category: "Hip Hop Culture", q: "Which Houston artist had the whole world wearing 'Grillz' in 2006?", options: ["Chamillionaire", "Paul Wall", "Mike Jones", "Slim Thug"], correct: 1 },
+    { category: "Sisterhood & Music", q: "Cassie's 2006 hit song was titled:", options: ["Me & U", "Long Way 2 Go", "Official Girl", "Is It You"], correct: 0 }
+];
 
-        let currentQIndex = 0, score = parseInt(localStorage.getItem('trivia_score')) || 0, timer, timeLeft = 45;
+// 2. STATE VARIABLES
+let currentQIndex = 0;
+let score = 0;
+let timer;
+let timeLeft = 45;
+let tapCount = 0;
+let tapTimer;
 
-        function showTab(tabId, element) {
-            document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
-            const target = document.getElementById(tabId + '-view');
-            if (target) target.classList.remove('hidden');
-            document.querySelectorAll('.nav-btn').forEach(btn => { btn.classList.remove('text-red-700'); btn.classList.add('text-slate-400'); });
-            if (element) { element.classList.remove('text-slate-400'); element.classList.add('text-red-700'); }
-            window.scrollTo(0,0);
-        }
+// 3. NAVIGATION LOGIC
+function showTab(tabId) {
+    document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
+    document.getElementById(tabId + '-view').classList.remove('hidden');
+    window.scrollTo(0,0);
+}
 
-        function startTrivia() { document.getElementById('trivia-score').innerText = score; loadNextQuestion(); }
+// 4. TRIVIA ENGINE
+function startTrivia() {
+    currentQIndex = 0;
+    score = 0;
+    document.getElementById('trivia-score').innerText = "0";
+    loadNextQuestion();
+}
 
-        function loadNextQuestion() {
-            const surface = document.getElementById('game-engine-surface');
-            const feedback = document.getElementById('trivia-feedback');
-            
-            // Check if we are out of questions
-            if (currentQIndex >= questions.length) {
-                const perfect = questions.length * 10;
-                surface.innerHTML = score >= perfect 
-                    ? `<div class="text-center py-10"><span class="text-6xl block mb-4">🐘</span><h3 class="text-3xl font-black text-red-700 italic">OO-OOP!</h3><p class="text-xl font-bold mt-2">Yesss girl! 💅✨</p></div>` 
-                    : `<div class="text-center py-10"><h3 class="text-2xl font-bold">Mission Complete!</h3><p class="mt-2 text-slate-500">Final Score: ${score}</p><button onclick="currentQIndex=0; score=0; startTrivia();" class="mt-4 text-red-700 font-bold uppercase text-[10px]">Restart?</button></div>`;
-                return;
-            }
-        
-            const q = questions[currentQIndex];
-            feedback.classList.add('hidden');
-            surface.classList.remove('hidden');
-        
-            // Inject the Question and Buttons
-            surface.innerHTML = `
-                <p class="text-[10px] font-black text-red-700 uppercase tracking-widest mb-2">${q.category}</p>
-                <h3 class="text-xl font-bold text-slate-800 mb-6 leading-tight">${q.q}</h3>
-                <div id="answer-options" class="space-y-3"></div>
-            `;
-        
-            const optionsDiv = document.getElementById('answer-options');
-            q.options.forEach((opt, idx) => {
-                const btn = document.createElement('button');
-                btn.className = "w-full text-left p-4 rounded-2xl border border-slate-100 bg-slate-50 text-sm font-bold active:bg-red-50 transition-all";
-                btn.innerText = opt;
-                btn.onclick = () => checkAnswer(idx);
-                optionsDiv.appendChild(btn);
-            });
-        
-            startTimer();
-        }
+function loadNextQuestion() {
+    const surface = document.getElementById('game-engine-surface');
+    const feedback = document.getElementById('trivia-feedback');
+    
+    if (!surface || !feedback) return;
 
-        function startTimer() {
-            clearInterval(timer); timeLeft = 45;
-            const bar = document.getElementById('timer-bar');
-            bar.className = "absolute top-0 left-0 h-1 bg-red-600 transition-all linear";
-            timer = setInterval(() => {
-                timeLeft--; bar.style.width = (timeLeft / 45 * 100) + '%';
-                if (timeLeft <= 10) bar.classList.add('animate-pulse');
-                if (timeLeft <= 0) { clearInterval(timer); checkAnswer(-1); }
-            }, 1000);
-        }
+    feedback.classList.add('hidden');
+    surface.classList.remove('hidden');
 
-        function checkAnswer(choice) {
+    if (currentQIndex >= questions.length) {
+        const perfect = questions.length * 10;
+        surface.innerHTML = score >= perfect 
+            ? `<div class="text-center py-10"><span class="text-6xl block mb-4">🐘</span><h3 class="text-3xl font-black text-red-700 italic">OO-OOP!</h3><p class="text-xl font-bold mt-2">Yesss girl! 💅✨</p></div>` 
+            : `<div class="text-center py-10"><h3 class="text-2xl font-bold">Mission Complete!</h3><p class="mt-2 text-slate-500">Score: ${score}</p><button onclick="startTrivia()" class="mt-4 text-red-700 font-bold uppercase text-xs">Try Again</button></div>`;
+        return;
+    }
+
+    const q = questions[currentQIndex];
+    surface.innerHTML = `
+        <p class="text-[10px] font-black text-red-700 uppercase tracking-widest mb-2">${q.category}</p>
+        <h3 class="text-xl font-bold text-slate-800 mb-6 leading-tight">${q.q}</h3>
+        <div id="answer-options" class="space-y-3"></div>
+    `;
+
+    const optionsDiv = document.getElementById('answer-options');
+    q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = "w-full text-left p-4 rounded-2xl border border-slate-100 bg-slate-50 text-sm font-bold active:bg-red-50";
+        btn.innerText = opt;
+        btn.onclick = function() { checkAnswer(idx); }; // Explicitly assigned
+        optionsDiv.appendChild(btn);
+    });
+    startTimer();
+}
+
+function startTimer() {
+    clearInterval(timer); 
+    timeLeft = 45;
+    const bar = document.getElementById('timer-bar');
+    if (bar) bar.style.width = "100%";
+    
+    timer = setInterval(() => {
+        timeLeft--; 
+        if (bar) bar.style.width = (timeLeft / 45 * 100) + '%';
+        if (timeLeft <= 0) {
             clearInterval(timer);
-            const q = questions[currentQIndex];
-            const feedback = document.getElementById('trivia-feedback');
-            const fText = document.getElementById('feedback-text');
-            document.getElementById('question-content').classList.add('hidden');
-            feedback.classList.remove('hidden');
-            if (choice === q.correct) {
-                score += 10; localStorage.setItem('trivia_score', score);
-                document.getElementById('trivia-score').innerText = score;
-                fText.innerText = "✅ CORRECT!"; fText.className = "text-green-600 font-bold";
-            } else {
-                fText.innerText = "❌ INCORRECT"; fText.className = "text-red-600 font-bold";
-            }
-            currentQIndex++;
+            checkAnswer(-1); 
         }
+    }, 1000);
+}
 
-        function updateCountdown() {
-            const retreatDate = new Date("January 16, 2026 17:00:00").getTime();
-            const now = new Date().getTime();
-            const gap = retreatDate - now;
-            if (gap > 0) {
-                document.getElementById("days").innerText = Math.floor(gap / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
-                document.getElementById("hours").innerText = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
-                document.getElementById("mins").innerText = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-                document.getElementById("secs").innerText = Math.floor((gap % (1000 * 60)) / 1000).toString().padStart(2, '0');
-            } else {
-                document.getElementById("countdown-container").classList.add('hidden');
-            }
-        }
+function checkAnswer(choice) {
+    clearInterval(timer);
+    const q = questions[currentQIndex];
+    const feedback = document.getElementById('trivia-feedback');
+    const surface = document.getElementById('game-engine-surface');
+    const fText = document.getElementById('feedback-text');
 
-        setInterval(updateCountdown, 1000); updateCountdown();
-        document.getElementById('display-version').innerText = LATEST_VERSION;
+    surface.classList.add('hidden');
+    feedback.classList.remove('hidden');
 
-        let tapCount = 0, tapTimer;
-        document.getElementById('app-title').addEventListener('click', () => {
-            tapCount++; clearTimeout(tapTimer);
-            tapTimer = setTimeout(() => tapCount = 0, 500);
-            if (tapCount === 5) { showTab('scavenger'); startTrivia(); tapCount = 0; }
-        });
+    if (choice === q.correct) {
+        score += 10;
+        document.getElementById('trivia-score').innerText = score;
+        fText.innerText = "✅ CORRECT!";
+        fText.className = "text-green-600 font-black italic text-2xl";
+    } else {
+        fText.innerText = choice === -1 ? "⏰ TIME'S UP!" : "❌ INCORRECT";
+        fText.className = "text-red-600 font-black italic text-2xl";
+    }
+    currentQIndex++;
+}
+
+// 5. COUNTDOWN & VERSION
+function updateCountdown() {
+    const target = new Date("January 16, 2026 17:00:00").getTime();
+    const now = new Date().getTime();
+    const gap = target - now;
+    if (gap > 0 && document.getElementById("days")) {
+        document.getElementById("days").innerText = Math.floor(gap / 864e5).toString().padStart(2,'0');
+        document.getElementById("hours").innerText = Math.floor((gap % 864e5) / 36e5).toString().padStart(2,'0');
+        document.getElementById("mins").innerText = Math.floor((gap % 36e5) / 6e4).toString().padStart(2,'0');
+        document.getElementById("secs").innerText = Math.floor((gap % 6e4) / 1e3).toString().padStart(2,'0');
+    }
+}
+setInterval(updateCountdown, 1000); 
+updateCountdown();
+document.getElementById('display-version').innerText = LATEST_VERSION;
+
+// 6. THE SECRET TRIGGER
+document.getElementById('app-title').addEventListener('click', () => {
+    tapCount++;
+    clearTimeout(tapTimer);
+    tapTimer = setTimeout(() => tapCount = 0, 500);
+    if (tapCount === 5) { 
+        showTab('scavenger'); 
+        tapCount = 0; 
+    }
+});
     </script>
 </body>
 </html>
