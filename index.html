@@ -151,69 +151,122 @@
         </section>
 
         <section id="gallery-view" class="hidden">
-            <div class="space-y-6 px-6 pt-6 content-wrapper">
-                <h2 class="text-3xl font-extrabold text-slate-800 tracking-tight">Gallery</h2>
-                <a href="https://photos.app.goo.gl/W8XiB9ucBarVG6mR8" target="_blank" class="flex items-center justify-between bg-white p-6 rounded-3xl shadow-sm border border-slate-100 active:scale-95 transition-transform">
-                    <div class="flex items-center space-x-4">
-                        <div class="w-12 h-12 bg-red-700 rounded-2xl flex items-center justify-center text-white italic">ΔΣΘ</div>
-                        <div>
-                            <p class="font-bold text-slate-800 text-sm uppercase">Shared Album</p>
-                            <p class="text-[10px] text-slate-500 font-bold uppercase">Upload Memories</p>
+            <div class="space-y-6">
+                <h2 class="text-3xl font-extrabold text-slate-800 tracking-tight">Sisterhood Gallery</h2>
+                <div class="space-y-4">
+                    <a href="https://photos.app.goo.gl/W8XiB9ucBarVG6mR8" target="_blank" class="flex items-center justify-between bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-red-50 rounded-2xl flex items-center justify-center text-2xl">📤</div>
+                            <div><p class="font-bold text-slate-800 text-sm uppercase">Upload Photos</p><p class="text-[10px] text-slate-500 font-bold uppercase">Add your shots</p></div>
                         </div>
-                    </div>
-                    <span>→</span>
-                </a>
+                        <span class="text-slate-300">→</span>
+                    </a>
+                    <a href="https://photos.app.goo.gl/W8XiB9ucBarVG6mR8" target="_blank" class="flex items-center justify-between bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-red-700 rounded-2xl flex items-center justify-center text-2xl text-white">🖼️</div>
+                            <div><p class="font-bold text-slate-800 text-sm uppercase">View Gallery</p><p class="text-[10px] text-slate-500 font-bold uppercase">See all memories</p></div>
+                        </div>
+                        <span class="text-slate-300">→</span>
+                    </a>
+                </div>
             </div>
         </section>
 
         <section id="travel-view" class="hidden">
             <div class="space-y-6 px-6 pt-6 content-wrapper">
-                <h2 class="text-3xl font-extrabold text-slate-800 tracking-tight">Logistics</h2>
-                <div class="bg-slate-900 p-6 rounded-[2.5rem] border border-slate-700 text-white">
-                    <p class="text-[9px] font-black text-red-500 uppercase tracking-widest mb-4 text-center">Mountain Forecast</p>
-                    <div class="grid grid-cols-3 gap-2">
-                        <div class="bg-white/5 rounded-2xl p-3 text-center border border-white/10">
-                            <p class="text-[9px] font-bold text-slate-400 uppercase">Fri</p>
-                            <p class="text-lg font-black">48°</p>
+                <h2 class="text-3xl font-extrabold text-slate-800 tracking-tight">Travel & Cabin</h2>
+
+                <a href="https://www.weather.com/weather/tenday/l/Ellijay+GA?canonicalCityId=12140a7620869a8f2f2830f0f4937740f959648943715c0e0f3984d412803b9b" target="_blank" class="block no-underline">
+                    <div class="bg-gradient-to-br from-slate-900 to-slate-800 p-6 rounded-[2.5rem] shadow-xl border border-slate-700 active:scale-95 transition-transform duration-200">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <div class="flex items-center space-x-2 mb-1">
+                                    <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                                    <p class="text-[10px] font-black text-red-500 uppercase tracking-[0.2em]">Live Ellijay Forecast</p>
+                                </div>
+                                <h3 class="text-2xl font-bold text-white tracking-tight">Mountain Chill</h3>
+                            </div>
+                            <span class="text-4xl">🏔️</span>
                         </div>
-                        <div class="bg-white/10 rounded-2xl p-3 text-center border border-red-500/30">
-                            <p class="text-[9px] font-bold text-slate-400 uppercase">Sat</p>
-                            <p class="text-lg font-black text-red-400">45°</p>
+                        
+                        <div class="grid grid-cols-3 gap-2">
+                            <div class="bg-white/5 rounded-2xl p-3 text-center border border-white/10">
+                                <p class="text-[9px] font-bold text-slate-400 uppercase">Fri</p>
+                                <p class="text-lg font-black text-white">48°</p>
+                                <p class="text-[9px] text-red-500">☁️</p>
+                            </div>
+                            <div class="bg-white/10 rounded-2xl p-3 text-center border border-red-500/30">
+                                <p class="text-[9px] font-bold text-slate-400 uppercase">Sat</p>
+                                <p class="text-lg font-black text-white">45°</p>
+                                <p class="text-[9px] text-red-500">☀️</p>
+                            </div>
+                            <div class="bg-white/5 rounded-2xl p-3 text-center border border-white/10">
+                                <p class="text-[9px] font-bold text-slate-400 uppercase">Sun</p>
+                                <p class="text-lg font-black text-white">50°</p>
+                                <p class="text-[9px] text-red-500">🌤️</p>
+                            </div>
                         </div>
-                        <div class="bg-white/5 rounded-2xl p-3 text-center border border-white/10">
-                            <p class="text-[9px] font-bold text-slate-400 uppercase">Sun</p>
-                            <p class="text-lg font-black">50°</p>
-                        </div>
+                        <p class="mt-4 text-[9px] text-slate-400 font-bold text-center uppercase tracking-[0.2em]">Tap for Full 10-Day Forecast →</p>
                     </div>
-                </div>
-                <div class="bg-white p-6 rounded-[2.5rem] border border-slate-100 text-center shadow-sm">
-                    <h3 class="text-xl font-bold text-slate-800">High River Retreat</h3>
-                    <p class="text-sm text-slate-500 mb-6 italic">808 High River Road, Ellijay, GA</p>
+                </a>
+
+                <div class="bg-white p-6 rounded-[2.5rem] border border-slate-100 shadow-sm">
+                    <h3 class="text-xl font-bold text-slate-800 mb-1 text-center">High River Retreat</h3>
+                    <p class="text-sm text-slate-500 mb-6 text-center italic leading-relaxed">
+                        808 High River Road<br>
+                        Ellijay, GA 30540
+                    </p>
                     <div class="grid grid-cols-2 gap-3">
-                        <button onclick="window.open('http://maps.apple.com/?address=808+High+River+Rd,Ellijay,GA')" class="bg-slate-800 text-white py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest">Apple</button>
-                        <button onclick="window.open('https://maps.google.com/?q=808+High+River+Rd,Ellijay,GA')" class="bg-white border border-slate-200 text-slate-800 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest">Google</button>
+                        <button onclick="openMap('apple')" class="bg-slate-800 text-white py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-md active:bg-slate-700">🍎 Apple Maps</button>
+                        <button onclick="openMap('google')" class="bg-white border border-slate-200 text-slate-800 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-sm active:bg-slate-50">🌍 Google Maps</button>
                     </div>
                 </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white p-5 rounded-[2rem] border border-slate-100 text-center shadow-sm">
+                        <p class="text-[10px] font-black text-red-700 uppercase mb-1">Check-In</p>
+                        <p class="text-lg font-bold text-slate-800">Fri, 5:00 PM</p>
+                        <div class="mt-2 py-1 bg-red-50 rounded-xl">
+                            <p class="text-[10px] text-red-700 font-black tracking-tighter uppercase">Code: 1913#</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-5 rounded-[2rem] border border-slate-100 text-center shadow-sm">
+                        <p class="text-[10px] font-black text-slate-400 uppercase mb-1">Check-Out</p>
+                        <p class="text-lg font-bold text-slate-800">Mon, 10:00 AM</p>
+                        <p class="text-[10px] text-slate-400 font-bold uppercase mt-2 tracking-widest">Safe Travels</p>
+                    </div>
+                </div>
+
+                <div class="h-32"></div>
             </div>
         </section>
 
         <section id="contact-view" class="hidden">
-            <div class="space-y-6 px-6 pt-6 content-wrapper">
+            <div class="space-y-6">
                 <h2 class="text-3xl font-extrabold text-slate-800 tracking-tight">Contacts</h2>
-                <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100 flex items-center justify-between mb-4">
+                <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100 flex items-center justify-between">
                     <div class="flex items-center space-x-4">
-                        <div class="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center text-red-700 font-bold text-xl uppercase">SB</div>
-                        <div><p class="font-bold text-slate-800 text-lg">Shante Brown</p><p class="text-[10px] text-slate-400 font-black uppercase">Coordinator</p></div>
+                        <div class="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center text-red-700 font-bold uppercase text-xl">SB</div>
+                        <div><p class="font-bold text-slate-800 text-lg">Shante Brown</p><p class="text-xs text-slate-500 uppercase tracking-widest">Retreat Coordinator</p></div>
                     </div>
-                    <a href="sms:4782133808" class="text-2xl">💬</a>
+                    <div class="flex space-x-2">
+                        <a href="sms:4782133808" class="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center border border-slate-100">💬</a>
+                        <a href="tel:4782133808" class="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center border border-slate-100">📞</a>
+                    </div>
                 </div>
                 <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100 flex items-center justify-between">
                     <div class="flex items-center space-x-4">
-                        <div class="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center text-red-700 font-bold text-xl uppercase">CM</div>
-                        <div><p class="font-bold text-slate-800 text-lg">Crystal McCorkle</p><p class="text-[10px] text-slate-400 font-black uppercase">Logistics</p></div>
+                        <div class="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center text-red-700 font-bold uppercase text-xl">CM</div>
+                        <div><p class="font-bold text-slate-800 text-lg">Crystal McCorkle</p><p class="text-xs text-slate-500 uppercase tracking-widest">Logistics</p></div>
                     </div>
-                    <a href="sms:4048584657" class="text-2xl">💬</a>
+                    <div class="flex space-x-2">
+                        <a href="sms:4048584657" class="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center border border-slate-100">💬</a>
+                        <a href="tel:4048584657" class="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center border border-slate-100">📞</a>
+                    </div>
                 </div>
+                <div class="h-40 w-full"></div> 
+                    
+                </div> </section>
             </div>
         </section>
 
