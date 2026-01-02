@@ -1,5 +1,6 @@
 /**
  * 2k6 Retreat - Trip Itinerary Data
+ * Updated by Management
  */
 
 const retreatData = [
@@ -11,14 +12,14 @@ const retreatData = [
                 title: "Arrival & Cabin Check-in", 
                 location: "Main Cabin", 
                 icon: "🚗",
-                details: "Welcome home! Pull up to the gate (Code: TBP) and head to the Main Cabin to find your room."
+                details: "Welcome Sisters! Head to the Main Cabin to pick up your Welcome Package then explore the complex to find your room."
             },
             { 
                 time: "7:00 PM", 
                 title: "Welcome Reception", 
                 location: "Main Cabin", 
                 icon: "🍴",
-                details: "R&B, hors d'oeuvres and cocktails. Come as you are...Let's kick off the weekend with some music and memories!"
+                details: "R&B, hors d'oeuvres and cocktails. Come as you are... Let's kick off the weekend with some music and memories!"
             }
         ]
     },
@@ -40,25 +41,25 @@ const retreatData = [
                 details: "Full Southern breakfast spread. Bring your appetite!"
             },
             { 
-                time: "10:30 -12:00PM", 
+                time: "10:30 -12:00 PM", 
                 title: "Reflection & Journaling", 
                 location: "Main Cabin", 
                 icon: "📖",
-                details: "A quiet space for a guided session. We'll provide the journals—you bring the heart."
+                details: "We'll be decorating our calendars and mapping out the year together! We'll provide the calendars so bring any scrapbooking stickers you'd like to share with the group."
             },
             { 
                 time: "12:00 PM", 
                 title: "Lunch", 
                 location: "Main Cabin", 
                 icon: "🍴",
-                details: "Light lunch: Gourmet salad bar and sandwiches."
+                details: "Lunch: Gourmet salad, soups, and sandwich bar."
             },
             { 
                 time: "2:00-7:00 PM", 
-                title: "Enjoy House & Family Check-in", 
+                title: "Enjoy Complex & Family Check-in", 
                 location: "Retreat Complex", 
                 icon: "🏠",
-                details: "Free time! Explore the trails, nap, or catch up with the sorors in the hot tub."
+                details: "Free time! Explore the trails, nap, or catch up with the Sorors in the hot tub or fire pit."
             },
             { 
                 time: "7:30 PM", 
@@ -84,14 +85,14 @@ const retreatData = [
                 title: "Yoga Session", 
                 location: "Guest House", 
                 icon: "🧘‍♀️",
-                details: "Release the tension. All levels welcome—mats are provided in your essentials list!"
+                details: "Release the tension. All levels welcome—mats are limited so please bring one if you have it!"
             },
             { 
-                time: "12:00 PM", 
-                title: "Lunch", 
+                time: "11:00 AM", // Fixed PM to AM for Brunch
+                title: "Brunch", 
                 location: "Main House", 
                 icon: "🍽️",
-                details: "Lunch will be served on the patio (weather permitting)."
+                details: "French toast, egg frittata, assorted breakfast proteins, fruit salad, and mimosas."
             },
             { 
                 time: "2:00 PM", 
@@ -112,7 +113,7 @@ const retreatData = [
                 title: "Dinner and Dancing", 
                 location: "Main House", 
                 icon: "💃",
-                details: "DEALER'S CHOICE: Wear that outfit you love but never get to wear. We're going out (in) with style!"
+                details: "DEALER'S CHOICE: Wear that outfit you love but never get to wear. We're going out (in) with style! <br><br><strong>Menu:</strong> Potato and Chili Bar - Turkey Chili and Vegetarian Chili; baked potatoes and various toppings."
             }
         ]
     },
@@ -131,7 +132,7 @@ const retreatData = [
                 title: "Check Out", 
                 location: "Safe Travels!", 
                 icon: "🏡",
-                details: "Please ensure all trash is in bins. We'll see you at the next one!"
+                details: "Please ensure all trash is in bins and all personal items are collected. We'll see you the next event!"
             }
         ]
     }
@@ -151,7 +152,6 @@ function renderAgenda() {
         `;
 
         day.events.forEach((event, eventIndex) => {
-            // Unique ID for each card's detail section
             const detailId = `detail-${dayIndex}-${eventIndex}`;
             
             html += `
@@ -175,7 +175,7 @@ function renderAgenda() {
                             </p>
                         </div>
                         <div class="flex items-center mt-3 space-x-1 opacity-40">
-                             <p class="text-[8px] text-red-700 font-bold uppercase tracking-widest">Tap for info</p>
+                             <p class="text-[8px] text-red-700 font-bold uppercase tracking-widest">Tap for details</p>
                              <span class="text-[8px]">▼</span>
                         </div>
                         ` : ''}
@@ -190,7 +190,6 @@ function renderAgenda() {
     container.innerHTML = html;
 }
 
-// Global toggle function
 window.toggleDetails = function(id) {
     const el = document.getElementById(id);
     if (el) {
@@ -199,7 +198,6 @@ window.toggleDetails = function(id) {
     }
 };
 
-// Init
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', renderAgenda);
 } else {
