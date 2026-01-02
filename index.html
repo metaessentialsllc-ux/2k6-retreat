@@ -56,17 +56,20 @@
     <main class="max-w-md mx-auto">
 
         <section id="home-view">
-            <div class="space-y-6 px-6 pt-6 content-wrapper">
-                <div class="py-4">
-                    <p class="text-xs font-black text-red-700 uppercase tracking-[0.3em] mb-1">Mountain Bound</p>
-                    <h2 class="text-4xl font-extrabold text-slate-800 tracking-tight">Welcome back, Soror.</h2>
+            <div class="relative w-full h-72 overflow-hidden">
+                <img src="assets/hero.jpg" alt="Retreat Cabin" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1518732714860-b62714ce0c59?auto=format&fit=crop&q=80&w=800'">
+                <div class="absolute inset-0 hero-gradient"></div>
+                <div class="absolute bottom-6 left-6">
+                    <p class="text-xs font-black text-red-700 uppercase tracking-[0.4em] mb-1">Mountain Bound</p>
+                    <h2 class="text-4xl font-extrabold text-slate-800 tracking-tight">Welcome, Soror.</h2>
                     <div class="flex items-center space-x-2 mt-2">
                         <div class="h-2 w-2 rounded-full bg-green-500 animate-pulse"></div>
-                        <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest">
-                            v<span id="display-version">1.0.3</span> • Ready for Ellijay
+                        <p class="text-[9px] font-black text-slate-500 uppercase tracking-widest">
+                            v<span id="display-version">1.0.3</span> • Active Sync
                         </p>
                     </div>
                 </div>
+            </div>
                 
                 <a href="YOUR_SPOTIFY_LINK" target="_blank" class="block bg-gradient-to-r from-green-600 to-green-500 p-5 rounded-[2.5rem] shadow-lg active:scale-95 transition-transform">
                     <div class="flex justify-between items-center">
@@ -80,59 +83,6 @@
                         <span class="text-white opacity-50">→</span>
                     </div>
                 </a>
-
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-white p-6 rounded-[2.5rem] border border-slate-100 shadow-sm text-center">
-                        <p class="text-2xl font-black text-slate-800">Jan 16</p>
-                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Arrival Date</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-[2.5rem] border border-slate-100 shadow-sm text-center">
-                        <p class="text-2xl font-black text-slate-800">808</p>
-                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">High River Rd</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="agenda-view" class="hidden">
-            <div class="space-y-6 px-6 pt-6 content-wrapper">
-                <h2 class="text-3xl font-extrabold text-slate-800 tracking-tight">Trip Agenda</h2>
-                <div id="agenda-container"></div>
-            </div>
-        </section>
-
-        <section id="gallery-view" class="hidden">
-            <div class="space-y-6 px-6 pt-6 content-wrapper">
-                <h2 class="text-3xl font-extrabold text-slate-800 tracking-tight">Sisterhood Gallery</h2>
-                <div class="space-y-4">
-                    <a href="https://photos.app.goo.gl/W8XiB9ucBarVG6mR8" target="_blank" class="flex items-center justify-between bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 bg-red-50 rounded-2xl flex items-center justify-center text-2xl">📤</div>
-                            <div>
-                                <p class="font-bold text-slate-800 text-sm uppercase">Upload Photos</p>
-                                <p class="text-[10px] text-slate-500 font-bold uppercase">Add your shots</p>
-                            </div>
-                        </div>
-                        <span class="text-slate-300">→</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section id="travel-view" class="hidden">
-            <div class="space-y-6 px-6 pt-6 content-wrapper">
-                <h2 class="text-3xl font-extrabold text-slate-800 tracking-tight">Travel & Cabin</h2>
-                
-                <div class="bg-slate-900 p-6 rounded-[2.5rem] text-white border border-slate-700 shadow-xl">
-                    <h3 class="font-bold uppercase tracking-widest text-[10px] text-red-500 mb-4 flex items-center">
-                        <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse mr-2"></span> Ellijay Forecast
-                    </h3>
-                    <div class="grid grid-cols-3 gap-2">
-                        <div class="text-center"><p class="text-[9px] uppercase text-slate-400">Fri</p><p class="text-lg font-black">48°</p></div>
-                        <div class="text-center bg-white/10 rounded-xl py-1"><p class="text-[9px] uppercase text-slate-400">Sat</p><p class="text-lg font-black text-red-400">45°</p></div>
-                        <div class="text-center"><p class="text-[9px] uppercase text-slate-400">Sun</p><p class="text-lg font-black">50°</p></div>
-                    </div>
-                </div>
 
                 <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-slate-100">
                     <h3 class="font-bold text-lg mb-4 text-slate-800 flex items-center">🎒 Packing Essentials</h3>
@@ -148,14 +98,152 @@
                     </ul>
                 </div>
 
-                <div class="bg-white p-6 rounded-[2.5rem] border border-slate-100 shadow-sm text-center">
-                    <h3 class="text-xl font-bold text-slate-800 mb-1">High River Retreat</h3>
-                    <p class="text-sm text-slate-500 mb-6 italic">808 High River Road, Ellijay, GA</p>
+                <div class="space-y-3">
+                        <h3 class="font-bold text-lg px-2 text-slate-800">❓ Common Questions</h3>
+                        
+                        <details class="bg-white p-5 rounded-[2rem] border border-slate-100 shadow-sm group">
+                            <summary class="list-none font-bold text-sm flex justify-between items-center cursor-pointer">
+                                Is there WiFi at the cabin?
+                                <span class="group-open:rotate-180 transition-transform text-red-700">▼</span>
+                            </summary>
+                            <p class="mt-4 pt-4 border-t border-slate-50 text-sm text-slate-500">
+                                Yes. Password: <span class="font-bold text-red-700">To be Provided</span>
+                            </p>
+                        </details>
+            
+                        <details class="bg-white p-5 rounded-[2rem] border border-slate-100 shadow-sm group">
+                            <summary class="list-none font-bold text-sm flex justify-between items-center cursor-pointer">
+                                What about groceries?
+                                <span class="group-open:rotate-180 transition-transform text-red-700">▼</span>
+                            </summary>
+                            <p class="mt-4 pt-4 border-t border-slate-50 text-sm text-slate-500">All meals will be provided. Aldi, Ingles and WalMart are all within 10 miles if you want anything additional.</p>
+                        </details>
+            
+                        <details class="bg-white p-5 rounded-[2rem] border border-slate-100 shadow-sm group">
+                            <summary class="list-none font-bold text-sm flex justify-between items-center cursor-pointer">
+                                What is the arrival time?
+                                <span class="group-open:rotate-180 transition-transform text-red-700">▼</span>
+                            </summary>
+                            <p class="mt-4 pt-4 border-t border-slate-50 text-sm text-slate-500">Check-in begins at 5:00 PM on Friday.</p>
+                        </details>
+            
+                        <details class="bg-white p-5 rounded-[2rem] border border-slate-100 shadow-sm group">
+                            <summary class="list-none font-bold text-sm flex justify-between items-center cursor-pointer">
+                                Where will I sleep?
+                                <span class="group-open:rotate-180 transition-transform text-red-700">▼</span>
+                            </summary>
+                            <p class="mt-4 pt-4 border-t border-slate-50 text-sm text-slate-500">The retreat complex is side-by-side mountain cabins with 11 bedrooms and 33 beds.</p>
+                        </details>
+            
+                        <details class="bg-white p-5 rounded-[2rem] border border-slate-100 shadow-sm group">
+                            <summary class="list-none font-bold text-sm flex justify-between items-center cursor-pointer">
+                                What should I wear to dinner Sunday night?
+                                <span class="group-open:rotate-180 transition-transform text-red-700">▼</span>
+                            </summary>
+                            <p class="mt-4 pt-4 border-t border-slate-50 text-sm text-slate-500">Wear something in your closet you never get to wear. <span class="font-black text-red-700">DEALER'S CHOICE</span></p>
+                        </details>
+            
+                        <div class="h-24 w-full"></div>
+                        
+                    </div> 
+                </div>
+                
+
+        <section id="agenda-view" class="hidden">
+            <div class="space-y-6 px-6 pt-6 content-wrapper">
+                <h2 class="text-3xl font-extrabold text-slate-800 tracking-tight">Trip Agenda</h2>
+                <div id="agenda-container"></div>
+            </div>
+        </section>
+
+        <section id="gallery-view" class="hidden">
+            <div class="space-y-6">
+                <h2 class="text-3xl font-extrabold text-slate-800 tracking-tight">Sisterhood Gallery</h2>
+                <div class="space-y-4">
+                    <a href="https://photos.app.goo.gl/W8XiB9ucBarVG6mR8" target="_blank" class="flex items-center justify-between bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-red-50 rounded-2xl flex items-center justify-center text-2xl">📤</div>
+                            <div><p class="font-bold text-slate-800 text-sm uppercase">Upload Photos</p><p class="text-[10px] text-slate-500 font-bold uppercase">Add your shots</p></div>
+                        </div>
+                        <span class="text-slate-300">→</span>
+                    </a>
+                    <a href="https://photos.app.goo.gl/W8XiB9ucBarVG6mR8" target="_blank" class="flex items-center justify-between bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-red-700 rounded-2xl flex items-center justify-center text-2xl text-white">🖼️</div>
+                            <div><p class="font-bold text-slate-800 text-sm uppercase">View Gallery</p><p class="text-[10px] text-slate-500 font-bold uppercase">See all memories</p></div>
+                        </div>
+                        <span class="text-slate-300">→</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="travel-view" class="hidden">
+            <div class="space-y-6 px-6 pt-6 content-wrapper">
+                <h2 class="text-3xl font-extrabold text-slate-800 tracking-tight">Travel & Cabin</h2>
+
+                <a href="https://www.weather.com/weather/tenday/l/Ellijay+GA?canonicalCityId=12140a7620869a8f2f2830f0f4937740f959648943715c0e0f3984d412803b9b" target="_blank" class="block no-underline">
+                    <div class="bg-gradient-to-br from-slate-900 to-slate-800 p-6 rounded-[2.5rem] shadow-xl border border-slate-700 active:scale-95 transition-transform duration-200">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <div class="flex items-center space-x-2 mb-1">
+                                    <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                                    <p class="text-[10px] font-black text-red-500 uppercase tracking-[0.2em]">Live Ellijay Forecast</p>
+                                </div>
+                                <h3 class="text-2xl font-bold text-white tracking-tight">Mountain Chill</h3>
+                            </div>
+                            <span class="text-4xl">🏔️</span>
+                        </div>
+                        
+                        <div class="grid grid-cols-3 gap-2">
+                            <div class="bg-white/5 rounded-2xl p-3 text-center border border-white/10">
+                                <p class="text-[9px] font-bold text-slate-400 uppercase">Fri</p>
+                                <p class="text-lg font-black text-white">48°</p>
+                                <p class="text-[9px] text-red-500">☁️</p>
+                            </div>
+                            <div class="bg-white/10 rounded-2xl p-3 text-center border border-red-500/30">
+                                <p class="text-[9px] font-bold text-slate-400 uppercase">Sat</p>
+                                <p class="text-lg font-black text-white">45°</p>
+                                <p class="text-[9px] text-red-500">☀️</p>
+                            </div>
+                            <div class="bg-white/5 rounded-2xl p-3 text-center border border-white/10">
+                                <p class="text-[9px] font-bold text-slate-400 uppercase">Sun</p>
+                                <p class="text-lg font-black text-white">50°</p>
+                                <p class="text-[9px] text-red-500">🌤️</p>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-[9px] text-slate-400 font-bold text-center uppercase tracking-[0.2em]">Tap for Full 10-Day Forecast →</p>
+                    </div>
+                </a>
+
+                <div class="bg-white p-6 rounded-[2.5rem] border border-slate-100 shadow-sm">
+                    <h3 class="text-xl font-bold text-slate-800 mb-1 text-center">High River Retreat</h3>
+                    <p class="text-sm text-slate-500 mb-6 text-center italic leading-relaxed">
+                        808 High River Road<br>
+                        Ellijay, GA 30540
+                    </p>
                     <div class="grid grid-cols-2 gap-3">
-                        <button onclick="window.open('http://maps.apple.com/?address=808+High+River+Rd,Ellijay,GA')" class="bg-slate-800 text-white py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest">🍎 Apple</button>
-                        <button onclick="window.open('https://www.google.com/maps/search/?api=1&query=808+High+River+Rd,Ellijay,GA')" class="bg-white border border-slate-200 text-slate-800 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest">🌍 Google</button>
+                        <button onclick="openMap('apple')" class="bg-slate-800 text-white py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-md active:bg-slate-700">🍎 Apple Maps</button>
+                        <button onclick="openMap('google')" class="bg-white border border-slate-200 text-slate-800 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-sm active:bg-slate-50">🌍 Google Maps</button>
                     </div>
                 </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white p-5 rounded-[2rem] border border-slate-100 text-center shadow-sm">
+                        <p class="text-[10px] font-black text-red-700 uppercase mb-1">Check-In</p>
+                        <p class="text-lg font-bold text-slate-800">Fri, 5:00 PM</p>
+                        <div class="mt-2 py-1 bg-red-50 rounded-xl">
+                            <p class="text-[10px] text-red-700 font-black tracking-tighter uppercase">Code: 1913#</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-5 rounded-[2rem] border border-slate-100 text-center shadow-sm">
+                        <p class="text-[10px] font-black text-slate-400 uppercase mb-1">Check-Out</p>
+                        <p class="text-lg font-bold text-slate-800">Mon, 10:00 AM</p>
+                        <p class="text-[10px] text-slate-400 font-bold uppercase mt-2 tracking-widest">Safe Travels</p>
+                    </div>
+                </div>
+
+                <div class="h-32"></div>
             </div>
         </section>
 
