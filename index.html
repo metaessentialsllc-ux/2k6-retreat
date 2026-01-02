@@ -337,68 +337,106 @@
         </button>
     </nav>
 
-    <script src="js/agenda.js?v=1.0.3"></script>
+    <script src="js/agenda.js?v=1.0.4"></script>
     <script>
+        const questions = [
+            { category: "At the Movies: 2k6", q: "In the 2006 film 'ATL', what was the name of the roller rink?", options: ["The Sparkle", "Cascade", "Skate Land", "The Palace"], correct: 1 },
+            { category: "At the Movies: 2k6", q: "Who won an Oscar for her film debut in 'Dreamgirls' (2006)?", options: ["Beyoncé", "Anika Noni Rose", "Jennifer Hudson", "Fantasia"], correct: 2 },
+            { category: "Black Cinema", q: "In 'Stomp the Yard', which fraternity was DJ Williams competing against?", options: ["Mu Gamma Xi", "Theta Nu Theta", "Sigma Gamma Rho", "Delta Sigma Theta"], correct: 0 },
+            { category: "2k6 Anthems", q: "This Yung Joc song had everyone 'flickin their wrists' in 2006.", options: ["Lean Wit It", "Shoulder Lean", "It's Goin' Down", "Snap Yo Fingers"], correct: 2 },
+            { category: "R&B Vibes", q: "Ne-Yo's first #1 single from 'In My Own Words' was:", options: ["Sexy Love", "Because of You", "Miss Independent", "So Sick"], correct: 3 },
+            { category: "Hip Hop Culture", q: "Which Houston artist had the whole world wearing 'Grillz' in 2006?", options: ["Chamillionaire", "Paul Wall", "Mike Jones", "Slim Thug"], correct: 1 },
+            { category: "Sisterhood & Music", q: "Cassie's 2006 hit song was titled:", options: ["Me & U", "Long Way 2 Go", "Official Girl", "Is It You"], correct: 0 }
+        ];
+
+        let currentQIndex = 0, score = parseInt(localStorage.getItem('trivia_score')) || 0, timer, timeLeft = 45;
+
         function showTab(tabId, element) {
             document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
             const target = document.getElementById(tabId + '-view');
             if (target) target.classList.remove('hidden');
-
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.remove('text-red-700');
-                btn.classList.add('text-slate-400');
-            });
-
-            if (element) {
-                element.classList.remove('text-slate-400');
-                element.classList.add('text-red-700');
-            } else {
-                // Find and highlight home by default
-                document.querySelector('.nav-btn').classList.add('text-red-700');
-            }
+            document.querySelectorAll('.nav-btn').forEach(btn => { btn.classList.remove('text-red-700'); btn.classList.add('text-slate-400'); });
+            if (element) { element.classList.remove('text-slate-400'); element.classList.add('text-red-700'); }
             window.scrollTo(0,0);
         }
 
-        document.getElementById('display-version').innerText = LATEST_VERSION;
+        function startTrivia() { document.getElementById('trivia-score').innerText = score; loadNextQuestion(); }
 
-        let tapCount = 0;
-        let tapTimer;
-        document.getElementById('app-title').addEventListener('click', () => {
-            tapCount++;
-            clearTimeout(tapTimer);
-            tapTimer = setTimeout(() => tapCount = 0, 500);
-            if (tapCount === 5) { showTab('scavenger'); tapCount = 0; }
-        });
+        function loadNextQuestion() {
+            const card = document.getElementById('question-content');
+            if (currentQIndex >= questions.length) {
+                const perfect = questions.length * 10;
+                card.innerHTML = score >= perfect ? `<div class="text-center py-10"><span class="text-6xl block">🐘</span><h3 class="text-3xl font-black text-red-700 italic">OO-OOP!</h3><p class="text-xl font-bold mt-2">Yesss girl! 💅✨</p></div>` : `<div class="text-center py-10"><h3 class="text-2xl font-bold">Done!</h3><p>Score: ${score}</p></div>`;
+                return;
+            }
+            const q = questions[currentQIndex];
+            document.getElementById('question-category').innerText = q.category;
+            document.getElementById('question-text').innerText = q.q;
+            document.getElementById('trivia-feedback').classList.add('hidden');
+            card.classList.remove('hidden');
+            const optionsDiv = document.getElementById('answer-options');
+            optionsDiv.innerHTML = '';
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-4 rounded-2xl border border-slate-100 bg-slate-50 text-sm font-bold active:bg-red-50";
+                btn.innerText = opt;
+                btn.onclick = () => checkAnswer(idx);
+                optionsDiv.appendChild(btn);
+            });
+            startTimer();
+        }
+
+        function startTimer() {
+            clearInterval(timer); timeLeft = 45;
+            const bar = document.getElementById('timer-bar');
+            bar.className = "absolute top-0 left-0 h-1 bg-red-600 transition-all linear";
+            timer = setInterval(() => {
+                timeLeft--; bar.style.width = (timeLeft / 45 * 100) + '%';
+                if (timeLeft <= 10) bar.classList.add('animate-pulse');
+                if (timeLeft <= 0) { clearInterval(timer); checkAnswer(-1); }
+            }, 1000);
+        }
+
+        function checkAnswer(choice) {
+            clearInterval(timer);
+            const q = questions[currentQIndex];
+            const feedback = document.getElementById('trivia-feedback');
+            const fText = document.getElementById('feedback-text');
+            document.getElementById('question-content').classList.add('hidden');
+            feedback.classList.remove('hidden');
+            if (choice === q.correct) {
+                score += 10; localStorage.setItem('trivia_score', score);
+                document.getElementById('trivia-score').innerText = score;
+                fText.innerText = "✅ CORRECT!"; fText.className = "text-green-600 font-bold";
+            } else {
+                fText.innerText = "❌ INCORRECT"; fText.className = "text-red-600 font-bold";
+            }
+            currentQIndex++;
+        }
 
         function updateCountdown() {
-    const retreatDate = new Date("January 16, 2026 17:00:00").getTime();
-    const now = new Date().getTime();
-    const gap = retreatDate - now;
-    const container = document.getElementById("countdown-container");
+            const retreatDate = new Date("January 16, 2026 17:00:00").getTime();
+            const now = new Date().getTime();
+            const gap = retreatDate - now;
+            if (gap > 0) {
+                document.getElementById("days").innerText = Math.floor(gap / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+                document.getElementById("hours").innerText = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+                document.getElementById("mins").innerText = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+                document.getElementById("secs").innerText = Math.floor((gap % (1000 * 60)) / 1000).toString().padStart(2, '0');
+            } else {
+                document.getElementById("countdown-container").classList.add('hidden');
+            }
+        }
 
-    if (gap > 0) {
-        const d = Math.floor(gap / (1000 * 60 * 60 * 24));
-        const h = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const m = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60));
-        const s = Math.floor((gap % (1000 * 60)) / 1000);
+        setInterval(updateCountdown, 1000); updateCountdown();
+        document.getElementById('display-version').innerText = LATEST_VERSION;
 
-        document.getElementById("days").innerText = d.toString().padStart(2, '0');
-        document.getElementById("hours").innerText = h.toString().padStart(2, '0');
-        document.getElementById("mins").innerText = m.toString().padStart(2, '0');
-        document.getElementById("secs").innerText = s.toString().padStart(2, '0');
-    } else {
-        // Hides the entire countdown area once the retreat starts
-        container.classList.add('hidden');
-    }
-}
-
-// Start the clock
-setInterval(updateCountdown, 1000);
-updateCountdown();
-    
-    // Start the clock and update every second
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
+        let tapCount = 0, tapTimer;
+        document.getElementById('app-title').addEventListener('click', () => {
+            tapCount++; clearTimeout(tapTimer);
+            tapTimer = setTimeout(() => tapCount = 0, 500);
+            if (tapCount === 5) { showTab('scavenger'); startTrivia(); tapCount = 0; }
+        });
     </script>
 </body>
 </html>
