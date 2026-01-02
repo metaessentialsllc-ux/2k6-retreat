@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <script>
-        const LATEST_VERSION = '1.0.5'; 
+        const LATEST_VERSION = '1.0.6'; 
         (function() {
             const savedVersion = localStorage.getItem('retreat_app_version');
             if (savedVersion !== LATEST_VERSION) {
@@ -21,7 +21,7 @@
         })();
     </script>
 
-    <link rel="manifest" href="manifest.json?v=1.0.5">
+    <link rel="manifest" href="manifest.json?v=1.0.6">
     <link rel="apple-touch-icon" href="assets/icon-192.png">
     <meta name="theme-color" content="#b91c1c">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -66,11 +66,14 @@
                             <div class="flex items-center space-x-2 mb-3">
                                                         <span class="bg-red-700 text-[10px] font-black uppercase px-2 py-1 rounded">2K6</span>
                                                     </div>
-                                                    <h2 class="text-4xl font-black leading-tight italic">
-                                                        Relax, Relate, Release 
-                                                        <br>
-                                                        <span class="text-red-600 not-italic uppercase tracking-tighter text-3xl">RETREAT</span>
-                                                    </h2>
+                                                    <div class="text-center px-4">
+                                                <h2 class="text-[28px] font-black italic text-slate-800 leading-none whitespace-nowrap tracking-tight">
+                                                    Relax, Relate, Release
+                                                </h2>
+                                                <p class="text-red-700 font-black uppercase tracking-[0.3em] text-3xl mt-1">
+                                                    RETREAT
+                                                </p>
+                                            </div>
                         
                             <div class="flex items-center justify-center space-x-2 mt-2 mb-6">
                                 <div class="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse"></div>
