@@ -66,7 +66,7 @@ const retreatData = [
                 title: "Dinner (Warm and Fuzzy)", 
                 location: "Main House", 
                 icon: "✨",
-                details: "Dress code: Your favorite fuzzy onesie! Tonight is all about the 'Relax' part of our theme."
+                details: "Dress code: Your favorite fuzzy onesie or pjs! Tonight is all about the 'Relax' part of our theme."
             }
         ]
     },
