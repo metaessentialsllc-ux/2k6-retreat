@@ -70,6 +70,25 @@
                         <p class="text-[9px] font-black text-slate-500 uppercase tracking-widest">
                             v<span id="display-version">1.0.3</span> • Active Sync
                         </p>
+                        <div id="countdown-container" class="mt-4 flex space-x-3">
+                                <div class="text-center">
+                                    <p id="days" class="text-xl font-black text-slate-800 leading-none">00</p>
+                                    <p class="text-[7px] font-bold text-slate-400 uppercase tracking-widest">Days</p>
+                                </div>
+                                <div class="text-center">
+                                    <p id="hours" class="text-xl font-black text-slate-800 leading-none">00</p>
+                                    <p class="text-[7px] font-bold text-slate-400 uppercase tracking-widest">Hrs</p>
+                                </div>
+                                <div class="text-center">
+                                    <p id="mins" class="text-xl font-black text-slate-800 leading-none">00</p>
+                                    <p class="text-[7px] font-bold text-slate-400 uppercase tracking-widest">Min</p>
+                                </div>
+                                <div class="text-center">
+                                    <p id="secs" class="text-xl font-black text-red-600 leading-none">00</p>
+                                    <p class="text-[7px] font-bold text-slate-400 uppercase tracking-widest">Sec</p>
+                                </div>
+                            </div>
+                        </div>   
                     </div>
                 </div>
             </div>
@@ -332,6 +351,36 @@
             tapTimer = setTimeout(() => tapCount = 0, 500);
             if (tapCount === 5) { showTab('scavenger'); tapCount = 0; }
         });
+
+        function updateCountdown() {
+    const retreatDate = new Date("January 16, 2026 17:00:00").getTime();
+    const now = new Date().getTime();
+    const gap = retreatDate - now;
+    const container = document.getElementById("countdown-container");
+
+    if (gap > 0) {
+        const d = Math.floor(gap / (1000 * 60 * 60 * 24));
+        const h = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((gap % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerText = d.toString().padStart(2, '0');
+        document.getElementById("hours").innerText = h.toString().padStart(2, '0');
+        document.getElementById("mins").innerText = m.toString().padStart(2, '0');
+        document.getElementById("secs").innerText = s.toString().padStart(2, '0');
+    } else {
+        // Hides the entire countdown area once the retreat starts
+        container.classList.add('hidden');
+    }
+}
+
+// Start the clock
+setInterval(updateCountdown, 1000);
+updateCountdown();
+    
+    // Start the clock and update every second
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
     </script>
 </body>
 </html>
