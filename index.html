@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <script>
-        const LATEST_VERSION = '1.0.8'; 
+        const LATEST_VERSION = '1.0.9'; 
         (function() {
             const savedVersion = localStorage.getItem('retreat_app_version');
             if (savedVersion !== LATEST_VERSION) {
@@ -21,7 +21,7 @@
         })();
     </script>
 
-    <link rel="manifest" href="manifest.json?v=1.0.8">
+    <link rel="manifest" href="manifest.json?v=1.0.9">
     <link rel="apple-touch-icon" href="assets/icon-192.png">
     <meta name="theme-color" content="#b91c1c">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -64,7 +64,7 @@
                         
                             <div class="flex items-center justify-center space-x-2 mt-2 mb-6">
                                 <div class="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse"></div>
-                                <p class="text-[9px] font-black text-white/80 uppercase tracking-widest">v<span id="display-version">1.0.8</span> • Active Sync</p>
+                                <p class="text-[9px] font-black text-white/80 uppercase tracking-widest">v<span id="display-version">0.0.8</span> • Active Sync</p>
                             </div>
                         
                             <div id="countdown-container" class="flex justify-center space-x-6 text-white font-black">
@@ -495,6 +495,16 @@ document.getElementById('app-title').addEventListener('click', () => {
         tapCount = 0; 
     }
 });
+
+// Force the version to display after the page loads
+setTimeout(() => {
+    const versionElement = document.getElementById('display-version');
+    if (versionElement) {
+        versionElement.innerText = LATEST_VERSION;
+        console.log("Version synced:", LATEST_VERSION);
+    }
+}, 500);
+        
     </script>
 </body>
 </html>
